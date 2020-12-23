@@ -1,0 +1,159 @@
+:root {
+    --maxImgWidth: 500px;
+    --maxImgHeight: 400px
+    --minImgHeight: 250px
+}
+
+.postWrapper {
+    width: 80%;
+    margin: auto;
+}
+
+.img {
+    background-color: var(--secBg);
+    display: flex;
+
+    width: 100%;
+}
+
+.img img {
+    margin: auto;
+    /*max-width: var(--maxImgWidth);
+    height: 500px;
+    min-height: var(--minImgHeight); */
+    max-height: var(--postHeight);
+    max-width: var(--postWidth);
+}
+
+@media screen and (max-width: 700px) {
+    .postWrapper {
+        width: 95%;
+    }
+    .img img {
+        width: 100%;
+        height: auto;
+        max-height: 500px;
+    }
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.deleteBtn, .sendBtn {
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.deleteBtn {
+    width: 40px;
+}
+
+.deleteBtn img {
+    width: 100%;
+}
+
+.user::before {
+    content: '@';
+}
+
+.postInfo p {
+    color: var(--greyTxt);
+    margin-bottom: 5px;
+}
+
+
+/* like & comment btns */
+.interactBtn, .interactBtn > div {
+    display: flex;
+    align-items: center;
+}
+
+.interactBtn {
+    gap: 2em;
+}
+
+.interactBtn  >div {
+    gap: 15px;
+    justify-content: center;
+}
+
+@media screen and (max-width: 500px) {
+    .postInfo h1 {
+        font-size: 25px;
+    }
+    .postInfo p {
+        font-size: 14px;
+    }
+    .deleteBtn {
+        width: 25px;
+    }
+}
+
+
+
+/* comments  section */
+
+.commentSection {
+    margin-top: 4em;
+    margin-bottom: 3em;
+}
+
+.commentSection > h1 {
+    color: var(--Lblue);
+    /* text-align: center; */
+}
+
+.comment {
+    margin: 10px 0;
+    padding-left: 5px;
+    border-left: 3px solid var(--Lblue);
+}
+
+.comment .user {
+    font-size: 20px;
+    color: var(--gold);
+}
+
+.comment p {
+    color: var(--greyTxt);
+    font-size: 14px;
+}
+
+.commentWrapper {
+    margin-bottom: 2em
+}
+
+.commentInput {
+    width: 100%;
+    margin: 2em auto;
+}
+
+.commentInput input:first-child {
+    width: 80%;
+    padding: 15px;
+    color: #333;
+    border-radius: 5px;
+}
+
+.sendBtn {
+    padding-left: 10px;
+    font-size: 25px;
+    color: var(--Red);
+}
+
+@media screen and (max-width: 500px) {
+    .commentInput input:first-child {
+        width: 80%;
+        padding: 6px;
+    }
+    .sendBtn {
+        font-size: 20px;
+    }
+}
+

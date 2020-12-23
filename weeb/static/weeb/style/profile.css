@@ -1,0 +1,214 @@
+/* * {
+    outline: 1px solid var(--gold);
+} */
+
+:root {
+    --maxImgWidth: 380px;
+    --minImgWidth: 280px;
+}
+
+body {
+    height: auto;
+}
+
+.content {
+    display: flex;
+    height: 80vh;
+}
+
+
+
+/* profile section */
+.profileWrapper {
+    flex: 1;
+    min-width: 400px;
+    max-width: 40%;
+    padding: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    display: flex;
+}
+
+.profileCard {
+    max-width: 80%;
+    padding: 1em;
+    margin: auto;
+    border: 2px solid var(--secBg);
+    border-radius: 3px;
+}
+
+.profileCard h1 {
+    font-size: 2.3rem;
+}
+
+.profileCard > h1::before {
+    content: '@';
+}
+
+.profileCard > p {
+    font-size: 1.1rem;
+}
+
+.profileCard > h3 {
+    color: var(--greyTxt);
+}
+
+.profileCard form input {
+    background: var(--mainBg);
+    color: var(--Red);
+    cursor: pointer;
+    font-size: 1.2em; 
+    padding: 3px 12px;
+    transition: all .2s ease; 
+}
+
+.profileCard form input:hover {
+    border-radius: 2px;
+    transform: translateX(1.05);
+    -webkit-box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow:    7px 7px 5px 0px rgba(0, 0, 0, 0.5);
+    box-shadow:         7px 7px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+
+@media screen and (max-width: 800px) {
+    .profileWrapper {
+        max-width: 100%;
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .profileWrapper {
+        padding: 0;
+        width: 100%;
+        min-width: 100%;
+    }
+    .profileCard {
+        max-width: 95%;
+        margin: auto;
+    }
+}
+
+
+
+
+
+
+/* post section */
+.postWrapper {
+    position: relative;
+
+    width: 60%;
+    padding: 3em 0;
+    
+    flex: 2;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--minImgWidth), var(--maxImgWidth)));
+    justify-content: space-evenly;
+    gap: 2em;
+    overflow-y: scroll;
+}
+
+.postWrapper > div {
+    position: relative;
+}
+
+
+.postWrapper a {
+    display: grid;
+    place-content: center;
+    background-color: var(--secBg);
+    height: 100%;
+}
+
+.img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secBg);
+}
+
+.img img {
+    max-height: var(--postHeight);
+    /* max-width: var(--postWidth); */
+    max-width: var(--maxImgWidth);
+}
+
+/* like and comment btn */
+
+.interactBtn, .interactBtn > div {
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+}
+
+.interactBtn {
+    position: absolute;
+    justify-content: space-evenly;
+    background: var(--secBg);
+    padding: 5px 0;
+    display: none;
+    width: 100%;
+    bottom: 0;
+    margin: auto;
+    gap: 2em;
+    /* transform: translateY(-2em); */
+    transition: all .3s ease;
+}
+
+.interactBtn > div {
+    gap: 15px;
+    justify-content: center;
+}
+
+.postWrapper > div:hover .interactBtn {
+    display: flex;
+}
+
+/* when there are no post  */
+
+.noPostMsg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.noPostMsg::before {
+    content: '* ';
+    color: var(--gold);
+}
+
+
+
+@media screen and (max-width: 800px) {
+    .content {
+        display: block;
+    }
+    .postWrapper {
+        width: 100%;
+        margin: auto;
+        overflow: initial;
+    }
+    .content {
+        height: auto;
+    }
+}
+
+
+@media screen and (max-width: 650px) {
+    .postWrapper > div:hover .interactBtn {
+        display: none;
+    }
+    :root {
+        --maxImgWidth: 300px;
+    }
+    .noPostMsg {
+        position: relative;
+    }
+}

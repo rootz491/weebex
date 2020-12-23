@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+    <!-- essential files -->
+    <link rel="stylesheet" href="style/base.css">
+    
+    <!-- specific files -->
+    <link rel="stylesheet" href="style/profile.css">
+    <link rel="stylesheet" href="style/newPost.css">
+    <script defer src="js/newPost.js"></script>
+    
+    <title>Weeb-Ex</title>
+</head>
+<body>
+    <!-- place it out of content in template -->
+    <div class="newPost" hidden>
+        <div class="postHeader">
+            <h1>Post</h1>
+            <img id="exitPost" src="img/exit.png" alt="exit">
+        </div>
+
+        <form id="post" action="#" method="POST" enctype="multipart/form-data">
+            <div class="imgInput">
+                <label for="imgFile">Image</label>
+                <input name="imgFile" id="imgFile" type="file" required>
+            </div>
+            <div class="captionInput">
+                <label for="caption">Caption</label>
+                <input placeholder="enter some captions" type="text">
+            </div>
+            <div class="submitWrapper">
+                <input id="submitBtn" type="submit" value="post">
+            </div>
+        </form>
+
+        <!-- as many as errors -->
+        <div class="warning">
+            <p id="errorMessage"><img src="https://img.icons8.com/emoji/18/000000/warning-emoji.png"/>  Size greater than 2MB</p>
+            <p id="errorMessage"><img src="https://img.icons8.com/emoji/18/000000/warning-emoji.png"/>  caption size exceeded</p>
+        </div>
+
+        <div id="rules">
+            <h3>Note</h3>
+            <ul>
+                <li>Size of image must be less that 2MB.</li>
+                <li>Caption can't have more that 50 words.</li>
+            </ul>
+        </div>    
+    </div>
+    
+    <div class="container">
+
+        <nav>
+            <div id="logo">
+                <a href="#home"><img src="img/logo.png" alt="logo"></a>
+            </div>
+
+            <div class="navBtn">
+                <div id="newPostBtn">
+                    <a id="newPost" href="#"><img src="img/new post.png" alt="new post"></a>
+                </div>
+                <div id="profileBtn">
+                    <a href="#"><img src="img/avatar.png" alt="avatar"></a>
+                </div>
+                <div id="logoutBtn">
+                    <a href="#"><img src="img/logout.png" alt="logOut"></a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="content">
+            
+            <div class="profileWrapper">
+
+                <div class="profileCard">
+                    <h1>UserName</h1>
+                    <p>user491@gmail.com</p>
+                    <p>firstName lastName</p>
+                    <h3>Posts: <span>5</span></h3>
+                    <form action="#deleteUser" method="POST">
+                        <!-- {% csrf_token %} -->
+                        <input id="deketeBtn" type="submit" value="delete user">
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="postWrapper">
+
+                <!-- when there are no posts -->
+                <!-- <h1 class="noPostMsg">Please post photos to get some display here.</h1> -->
+
+                <div><a href="#postDetailed">
+                    <div class="img"><img src="media/me.jpg" alt="post thumbnail"></div>
+                    </a>
+                    <div class="interactBtn">
+                        <div><a href="#like"><img src="img/like2.png" alt="like button"></a><span>69</span></div>
+                        <div><a href="#postDetailed/comment"><img src="img/comment.png" alt="comment button"></a><span>3</span></div>
+                    </div>    
+                </div>
+                <div><a href="#postDetailed">
+                    <div class="img"><img src="media/degree.jpeg" alt="post thumbnail"></div>
+                    </a>
+                    <div class="interactBtn">
+                        <div><a href="#like"><img src="img/like2.png" alt="like button"></a><span>69</span></div>
+                        <div><a href="#postDetailed/comment"><img src="img/comment.png" alt="comment button"></a><span>3</span></div>
+                    </div>
+                </div>
+                <div><a href="#postDetailed">
+                    <div class="img"><img src="media/whatever.jpeg" alt="post thumbnail"></div>
+                    </a>
+                    <div class="interactBtn">
+                        <div><a href="#like"><img src="img/like2.png" alt="like button"></a><span>69</span></div>
+                        <div><a href="#postDetailed/comment"><img src="img/comment.png" alt="comment button"></a><span>3</span></div>
+                    </div>
+                </div>
+                <div><a href="#postDetailed">
+                    <div class="img"><img src="img/logo.png" alt="post thumbnail"></div>
+                    </a>
+                    <div class="interactBtn">
+                        <div><a href="#like"><img src="img/like2.png" alt="like button"></a><span>69</span></div>
+                        <div><a href="#postDetailed/comment"><img src="img/comment.png" alt="comment button"></a><span>3</span></div>
+                    </div>
+                </div>
+                <div><a href="#postDetailed">
+                    <div class="img"><img src="media/sans.png" alt="post thumbnail"></div>
+                    </a>
+                    <div class="interactBtn">
+                        <div><a href="#like"><img src="img/like2.png" alt="like button"></a><span>69</span></div>
+                        <div><a href="#postDetailed/comment"><img src="img/comment.png" alt="comment button"></a><span>3</span></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

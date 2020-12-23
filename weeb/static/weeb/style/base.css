@@ -1,0 +1,96 @@
+:root {
+    /* colors */
+    --mainBg: #1C1E29;
+    --secBg:	#33354B;
+    --Lblue:	#01E1E1;
+    --Red:	#F06A8C;
+    --greyTxt:#9096B4;	
+    --whiteTxt:#F2FFFF;
+    --lPuple:	#757AA1;
+    --gold:	#FFA600;
+    /* screen size */
+    --postWidth: 500px;
+    --postHeight: 400px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--whiteTxt);
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    scroll-behavior: smooth;
+}
+
+body {
+    height: 100vh;
+    background-color: var(--mainBg);
+}
+
+span {
+    color: var(--gold);
+}
+
+input, input:active, input::selection, input:focus, textarea:focus, select:focus {
+    outline: none;
+    border: none;
+}
+
+.container {
+    min-height: 100vh;
+}
+
+nav {
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo {
+    width: 90px;
+}
+
+#logo img {
+    width: 100%;
+}
+
+#logo::after {
+    content: 'WeebEx';
+    color: var(--lPuple);
+    font-size: 2.5em;
+    position: absolute;
+    transform: translate(0%, 25%);
+}
+
+.navBtn {
+    display: flex;
+    gap: 2em;
+}
+
+.navBtn > div {
+    width: 40px;
+}
+
+.navBtn img {
+    width: 100%;
+}
+
+
+
+
+@media screen and (max-width: 600px) {
+    #logo {
+        width: 60px;
+    }
+    #logo::after {
+        content: '';
+    }
+    .navBtn {
+        gap: .8em;
+    }
+    .navBtn > div {
+        width: 35px;
+    }
+}

@@ -1,0 +1,161 @@
+/* div {
+    outline: 1px solid gold;
+} */
+
+.content {
+    height: 75vh;
+    padding: 0 1em;
+    display: flex;
+}
+
+
+
+
+
+
+/* postwall */
+#postWall {
+    padding: 3em 0;
+    padding-bottom: 0;
+    flex: 2;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+#postWall::-webkit-scrollbar {
+    display: none;
+}
+
+.post {
+    margin: auto;
+    margin-bottom: 3em;
+    width: var(--postWidth);
+}
+
+
+.post > p {
+    letter-spacing: 1.7px;
+    margin: 15px 0;
+    color: var(--greyTxt);
+}
+
+.user::before {
+    content: '@';
+}
+
+.img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secBg);
+}
+
+.img img {
+    max-height: var(--postHeight);
+    max-width: var(--postWidth);
+}
+
+/* like & comment btns */
+.interactBtn, .interactBtn > div {
+    display: flex;
+    align-items: center;
+}
+
+.interactBtn {
+    gap: 2em;
+}
+
+.interactBtn  >div {
+    gap: 15px;
+    justify-content: center;
+}
+
+
+
+@media screen and (max-width: 600px) {
+    :root {
+        --postWidth: 300px;
+        --postHeight: 320px;
+    }
+    .post {
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* dev card */
+.devWrapper {
+    display: grid;
+    place-items: center;
+}
+
+.devWrapper {
+    padding: 1em;
+    flex: 1;
+}
+
+#DEV {
+    width: 375px;
+    background-color: var(--secBg);
+    border-radius: 10px;
+    padding: 1em;
+}
+
+#DEV  > h1 {
+    margin: 0 1em;
+    letter-spacing: 4px;
+    padding: .15em 0;
+    text-align: center;
+    border-bottom: 3px solid var(--lPuple);
+}
+
+#DEV  > h1::after {
+    content: "/>";
+}
+
+#DEV  > h1::before {
+    content: "<";
+}
+
+#DEV > p {
+    font-size: 1.5em;
+    letter-spacing: 4px;
+    padding: 2em;
+    text-align: justify;
+    padding-top: 1.3em;
+}
+
+.externalLinks {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.externalLinks > div {
+    width: 50px;
+}
+
+.externalLinks img {
+    width: 100%;
+}
+
+
+
+
+@media screen and (max-width: 1000px) {
+    .devWrapper {
+        display: none;
+    }    
+}

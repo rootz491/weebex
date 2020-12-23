@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+    <!-- essential files -->
+    <link rel="stylesheet" href="style/base.css">
+
+    <!-- specific files -->
+    <link rel="stylesheet" href="style/postDetailed.css">
+    
+    <title>Weeb-Ex</title>
+</head>
+<body>
+    
+    <div class="container">
+
+        <nav>
+            <div id="logo">
+                <a href="#home"><img src="img/logo.png" alt="logo"></a>
+            </div>
+
+            <div class="navBtn">
+                <div id="newPostBtn">
+                    <a href="#"><img src="img/new post.png" alt="new post"></a>
+                </div>
+                <div id="profileBtn">
+                    <a href="#"><img src="img/avatar.png" alt="avatar"></a>
+                </div>
+                <div id="logoutBtn">
+                    <a href="#"><img src="img/logout.png" alt="logOut"></a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="content">
+            
+            <div class="postWrapper">
+                <div class="img">
+                    <img src="media/me.jpg" alt="post img">
+                </div>
+                <div class="postInfo">
+                    <div class="options">
+                        <h1 class="user">username</h1>
+                        <!-- only if user is owner of post -->
+                        <form method="POST" action="#deletePost">
+                            <!-- {% csrf_token %} -->
+                            <button class="deleteBtn" type="submit"><img src="img/delete.png" alt="delete btn"></button>
+                        </form>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, ea, temporibus perspiciatis quia repellat labore nulla eaque obcaecati maiores sit.
+                    </p>
+                    <div class="interactBtn">
+                        <div><a href="#like"><img src="img/like2.png" alt="like button"></a><span>69</span></div>
+                        <div><a href="#inputComment"><img src="img/comment.png" alt="comment button"></a><span>3</span></div>
+                    </div>
+                </div>
+
+                <div class="commentSection">
+                    
+                    <h1>comments</h1>
+                    <!-- comments -->
+                    <div class="commentWrapper">
+
+                        <!-- if no comment are there, the initial state. -->
+                        <!-- <div class="comment">
+                            <h1>Be the First one to comment.</h1>
+                        </div> -->
+                        
+                        <div class="comment">
+                            <h2 class="user">username</h2>
+                            <p class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum facere natus obcaecati.</p>
+                        </div>
+                        <div class="comment">
+                            <h2 class="user">username</h2>
+                            <p class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum facere natus obcaecati.</p>
+                        </div>
+                        <div class="comment">
+                            <h2 class="user">username</h2>
+                            <p class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum facere natus obcaecati.</p>
+                        </div>
+                    </div>
+                    <!-- comment input box -->
+                    <div class="commentInput">
+                        <form action="#postComment" method="POST">
+                            <input placeholder="comment here" id="inputComment" type="text" name="comment" id="commentInput">
+                            <input class="sendBtn" type="submit" value="send">
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

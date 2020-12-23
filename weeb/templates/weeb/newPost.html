@@ -1,0 +1,35 @@
+    <!-- place it out of content in template -->
+    <div class="newPost" hidden>
+        <div class="postHeader">
+            <h1>Post</h1>
+            <img id="exitPost" src="img/exit.png" alt="exit">
+        </div>
+
+        <form id="post" action="#" method="POST" enctype="multipart/form-data">
+            <div class="imgInput">
+                <label for="imgFile">Image</label>
+                <input name="imgFile" id="imgFile" type="file" required>
+            </div>
+            <div class="captionInput">
+                <label for="caption">Caption</label>
+                <input placeholder="enter some captions" type="text">
+            </div>
+            <div class="submitWrapper">
+                <input id="submitBtn" type="submit" value="post">
+            </div>
+        </form>
+
+        <!-- as many as errors -->
+        <div class="warning">
+            <p id="errorMessage"><img src="https://img.icons8.com/emoji/18/000000/warning-emoji.png"/>  Size greater than 2MB</p>
+            <p id="errorMessage"><img src="https://img.icons8.com/emoji/18/000000/warning-emoji.png"/>  caption size exceeded</p>
+        </div>
+
+        <div id="rules">
+            <h3>Note</h3>
+            <ul>
+                <li>Size of image must be less that 2MB.</li>
+                <li>Caption can't have more that 50 words.</li>
+            </ul>
+        </div>
+    </div>

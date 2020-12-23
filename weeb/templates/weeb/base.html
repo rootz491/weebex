@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+    <!-- essential files -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style/base.css' %}">
+
+    <!-- specific files -->
+    {% block specific %}
+        { load static }
+    {% endblock %}
+    
+    <title> {% block title %} Weeb-Ex {% endblock %} </title>
+</head>
+<body>
+    
+    <div class="container">
+
+        {% block nonContent %}
+
+        {% endblock %}
+
+        <nav>
+            <div id="logo">
+                {% load static %}
+                <a href="#home"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
+            </div>
+
+            <div class="navBtn">
+                <div id="newPostBtn">
+                    <a href="#"><img src="{% static 'img/new post.png' %}" alt="new post"></a>
+                </div>
+                <div id="profileBtn">
+                    <a href="#"><img src="{% static 'img/avatar.png' %}" alt="avatar"></a>
+                </div>
+                <div id="logoutBtn">
+                    <a href="#"><img src="{% static 'img/logout.png' %}" alt="logOut"></a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="content">
+
+            {% block Content %}
+            {% endblock %}
+
+        </div>
+    </div>
+
+</body>
+</html>

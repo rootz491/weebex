@@ -1,0 +1,70 @@
+{% extends 'weeb/base.html' %}
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/base.css' %}">
+    
+    <!-- specific files -->
+    {% block specific %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'style/newPost.css' %}">
+    <script defer src="{% static 'js/newPost.js' %}"></script>
+
+    <!-- testing script -->
+    <script defer src="{% static 'js/createPost.js' %}"></script>
+    {% endblock %}
+
+
+    {% block title %}
+        home
+    {% endblock %}
+
+
+    {% block nonContent %}
+        {% include 'weeb/newPost.html' %}
+    {% endblock %}
+    
+
+
+        <!-- cotent -->
+    {% block content %}
+            
+            <div id="postWall">
+                <template>
+                <div class="post">
+                    <a href="#userProfileLink"><h3 class="user">userName</h3></a>
+                    <a href="#postDetailed"><div class="img"><img src="media/degree.jpeg" alt="user pic"></div></a>
+                    <p class="caption">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci magni nulla modi deserunt officia, unde repellendus ut neque ipsam molestias soluta eligendi recusandae vel, tempora voluptate! Veritatis, iusto. Illum, illo!
+                    </p>
+                    <div class="interactBtn">
+                        <div><a href="#like"><img src="img/like2.png" alt="like button"></a><span>69</span></div>
+                        <div><a href="#postDetailed/comment"><img src="img/comment.png" alt="comment button"></a><span>3</span></div>
+                    </div>
+                </div>
+                </template>
+            </div>
+
+            <div class="devWrapper">
+                <div id="DEV">
+                    <h1> DEV </h1>
+    
+                    <p>Hii, I'm <b>Karan</b>. A CompSci Student doing webdev for fun.</p>
+    
+                    <div class="externalLinks">
+                        <div><a target="_blank" href="https://twitter.com/karansh491">
+                            <img src="https://img.icons8.com/cute-clipart/64/000000/twitter.png"/>
+                        </a></div>
+                        <div><a target="_blank" href="https://github.com/rootz491">
+                            <img src="https://img.icons8.com/cute-clipart/64/000000/github.png"/>
+                        </a></div>
+                        <div><a target="_blank" href="https://instagram.com/karansh491">
+                            <img src="https://img.icons8.com/cute-clipart/64/000000/instagram-new.png"/>
+                        </a></div>
+                        <div><a target="_blank" href="#discord">
+                            <img src="https://img.icons8.com/cute-clipart/64/000000/discord-logo.png"/>
+                        </a></div>
+                    </div>
+                </div>
+            </div>
+    {% endblock %}
