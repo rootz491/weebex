@@ -29,14 +29,15 @@
             
             <div id="postWall">
 
-
+            {% for post in postObj %}
 
                 <div class="post">
                     <a href="#userProfileLink"><h3 class="user">userName</h3></a>
                     {% load static %}
-                    <a href="#postDetailed"><div class="img"><img src="{% static 'weeb/media/degree.jpeg' %}" alt="user pic"></div></a>
+                    <a href="#postDetailed"><div class="img"><img src="{{ post.img.url }}" alt="user pic"></div></a>
                     <p class="caption">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci magni nulla modi deserunt officia, unde repellendus ut neque ipsam molestias soluta eligendi recusandae vel, tempora voluptate! Veritatis, iusto. Illum, illo!
+                        {{ post.caption }}
+<!--                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci magni nulla modi deserunt officia, unde repellendus ut neque ipsam molestias soluta eligendi recusandae vel, tempora voluptate! Veritatis, iusto. Illum, illo!-->
                     </p>
                     <div class="interactBtn">
                         <div><a href="#like"><img src="{% static 'weeb/img/like2.png' %}" alt="like button"></a><span>69</span></div>
@@ -44,7 +45,7 @@
                     </div>
                 </div>
 
-
+            {% endfor %}
 
             </div>
 
