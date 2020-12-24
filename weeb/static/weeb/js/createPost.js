@@ -4,32 +4,32 @@ let posts = {
     1: {
         user: "sudi",
         caption: 'finally my hard work paid off.',
-        img: 'media/degree.jpeg'
+        img: '{% static "media/degree.jpeg" %}'
     },
     2: {
         user: "karansh491",
         caption: 'Wabalabadubdub',
-        img: 'media/me.jpg'
+        img: '{% static "weeb/media/me.jpg" %}'
     },
     3: {
         user: "niku",
         caption: 'Unde repellendus ut neque ipsam molestias soluta eligendi recusandae vel, tempora voluptate! Veritatis, iusto. Illum, illo!',
-        img: 'media/old-rig.jpg'
+        img: '{% static "weeb/media/old-rig.jpg" %}'
     },
     4: {
         user: "Sans",
         caption: 'tempora voluptate! Veritatis, iusto. Illum, illo!',
-        img: 'media/sans.png'
+        img: '{% static "weeb/media/sans.png" %}'
     },
     5: {
         user: "Aditya",
         caption: '',
-        img: 'media/whatever.jpeg'
+        img: '{% static "weeb/media/whatever.jpeg" %}'
     },
     6: {
         user: "karansh491",
         caption: 'this is final text! get EXCITED you\'ll!',
-        img: 'img/logo.png'
+        img: '{% static "weeb/img/logo.png" %}'
     }
 }
 

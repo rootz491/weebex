@@ -4,12 +4,12 @@
     <!-- specific files -->
     {% block specific %}
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'style/main.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'style/newPost.css' %}">
-    <script defer src="{% static 'js/newPost.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'weeb/style/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'weeb/style/newPost.css' %}">
+    <script defer src="{% static 'weeb/js/newPost.js' %}"></script>
 
     <!-- testing script -->
-    <script defer src="{% static 'js/createPost.js' %}"></script>
+<!--    <script defer src="{% static 'weeb/js/createPost.js' %}"></script>-->
     {% endblock %}
 
 
@@ -28,19 +28,24 @@
     {% block content %}
             
             <div id="postWall">
-                <template>
+
+
+
                 <div class="post">
                     <a href="#userProfileLink"><h3 class="user">userName</h3></a>
-                    <a href="#postDetailed"><div class="img"><img src="{% static 'media/degree.jpeg' %}" alt="user pic"></div></a>
+                    {% load static %}
+                    <a href="#postDetailed"><div class="img"><img src="{% static 'weeb/media/degree.jpeg' %}" alt="user pic"></div></a>
                     <p class="caption">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci magni nulla modi deserunt officia, unde repellendus ut neque ipsam molestias soluta eligendi recusandae vel, tempora voluptate! Veritatis, iusto. Illum, illo!
                     </p>
                     <div class="interactBtn">
-                        <div><a href="#like"><img src="{% static 'img/like2.png' %}" alt="like button"></a><span>69</span></div>
-                        <div><a href="#postDetailed/comment"><img src="{% static 'img/comment.png' %}" alt="comment button"></a><span>3</span></div>
+                        <div><a href="#like"><img src="{% static 'weeb/img/like2.png' %}" alt="like button"></a><span>69</span></div>
+                        <div><a href="#postDetailed/comment"><img src="{% static 'weeb/img/comment.png' %}" alt="comment button"></a><span>3</span></div>
                     </div>
                 </div>
-                </template>
+
+
+
             </div>
 
             <div class="devWrapper">

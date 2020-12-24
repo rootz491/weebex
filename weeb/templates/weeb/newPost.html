@@ -2,7 +2,8 @@
     <div class="newPost" hidden>
         <div class="postHeader">
             <h1>Post</h1>
-            <img id="exitPost" src="img/exit.png" alt="exit">
+            {% load static %}
+            <img id="exitPost" src="{% static 'weeb/img/exit.png' %}" alt="exit">
         </div>
 
         <form id="post" action="#" method="POST" enctype="multipart/form-data">
@@ -12,7 +13,7 @@
             </div>
             <div class="captionInput">
                 <label for="caption">Caption</label>
-                <input placeholder="enter some captions" type="text">
+                <input placeholder="enter some captions" id="caption" name="caption" type="text">
             </div>
             <div class="submitWrapper">
                 <input id="submitBtn" type="submit" value="post">

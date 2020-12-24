@@ -1,16 +1,16 @@
 from django.db import models
-from uuid import uuid4 as uuid
+import uuid
 
 # Create your models here.
 
 
 class Post(models.Model):
-    img = models.ImageField(upload_to='img')
-    caption = models.CharField(max_length=100, null=True)
-    id = models.UUIDField(default=uuid(), primary_key=True)
+    img = models.ImageField(upload_to='img', help_text='try to upload a square picture.')
+    caption = models.CharField(max_length=100, blank=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='Unique ID for each post')
 
     def __str__(self):
-        return 'post -> ' + self.id
+        return 'post'
 
 
 class Like(models.Model):

@@ -7,4 +7,4 @@ from django.http import HttpResponse
 
 def index(request):
 
-    return render(request, 'weeb/base.html')
+    return render(request, 'weeb/home.html')

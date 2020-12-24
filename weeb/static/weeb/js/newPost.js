@@ -1,4 +1,4 @@
-const postBtn = document.getElementById('newPost');
+const postBtn = document.getElementById('newPostBtn');
 const form = document.querySelector('.newPost');
 const container = document.querySelector('.container');
 const exitBtn = document.querySelector('#exitPost');
