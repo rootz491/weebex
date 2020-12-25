@@ -7,8 +7,10 @@ import uuid
 
 class Profile(models.Model):
     owner = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    username = models.CharField(max_length=30, blank=False)
-
+    username = models.CharField(max_length=30, help_text='should only contains alphabetic or numeric character.')
+    fullName = models.CharField(max_length=60, help_text='60 characters or less.')  # new
+    bio = models.TextField(max_length=140, help_text='140 characters or less.')     # new
+    twitterHandle = models.CharField(max_length=40, help_text='40 characters or less.')     # new
     joinedOn = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -34,8 +36,10 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='post')
     comment = models.CharField(max_length=150, null=False, help_text='length of comment should be less than 150 characters')
+    likes = models.ManyToManyField(User, blank=True)
 
     def __str__(self):
-        return self.comment[:15]
+        return 'comment @' + str(self.user) + ' ' + str(self.id)

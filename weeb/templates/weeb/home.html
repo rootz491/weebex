@@ -1,12 +1,14 @@
 {% extends 'weeb/base.html' %}
 
 
+<!--    TODO: check whether user has liked the post or not and according to that, choose between Like1 and Like2    -->
+
     <!-- specific files -->
     {% block specific %}
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'weeb/style/main.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'weeb/style/newPost.css' %}">
-    <script defer src="{% static 'weeb/js/newPost.js' %}"></script>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'weeb/style/main.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'weeb/style/newPost.css' %}">
+        <script defer src="{% static 'weeb/js/newPost.js' %}"></script>
 
     <!-- testing script -->
 <!--    <script defer src="{% static 'weeb/js/createPost.js' %}"></script>-->
@@ -28,25 +30,24 @@
     {% block content %}
             
             <div id="postWall">
-
+            {% if user %}
             {% for post in postObj %}
-
+                <!--    post    -->
                 <div class="post">
-                    <a href="#userProfileLink"><h3 class="user">userName</h3></a>
+                    <a href="#userProfileLink"><h3 class="user">{{ post.user }}</h3></a>
                     {% load static %}
-                    <a href="#postDetailed"><div class="img"><img src="{{ post.img.url }}" alt="user pic"></div></a>
+                    <a href="#"><div class="img"><img src="{{ post.img.url }}" alt="user pic"></div></a>
                     <p class="caption">
                         {{ post.caption }}
-<!--                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci magni nulla modi deserunt officia, unde repellendus ut neque ipsam molestias soluta eligendi recusandae vel, tempora voluptate! Veritatis, iusto. Illum, illo!-->
                     </p>
                     <div class="interactBtn">
-                        <div><a href="#like"><img src="{% static 'weeb/img/like2.png' %}" alt="like button"></a><span>69</span></div>
-                        <div><a href="#postDetailed/comment"><img src="{% static 'weeb/img/comment.png' %}" alt="comment button"></a><span>3</span></div>
+                        <div><a href="#like"><img src="{% static 'weeb/img/like1.png' %}" alt="like button"></a><span>{{ post.likes.count }}</span></div>
+                        <div><a href="#postDetailed/comment"><img src="{% static 'weeb/img/comment.png' %}" alt="comment button"></a><span>{{ post.Comment_set.count }}</span></div>
                     </div>
                 </div>
 
             {% endfor %}
-
+            {% endif %}
             </div>
 
             <div class="devWrapper">

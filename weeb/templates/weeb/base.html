@@ -21,17 +21,18 @@
     <title> {% block title %} Weeb-Ex {% endblock %} </title>
 </head>
 <body>
-    
+
+    {% block nonContent %}
+
+    {% endblock %}
+
     <div class="container">
 
-        {% block nonContent %}
-
-        {% endblock %}
 
         <nav>
             <div id="logo">
                 {% load static %}
-                <a href="#home"><img src="{% static 'weeb/img/logo.png' %}" alt="logo"></a>
+                <a href="{% url 'weeb:index' %}"><img src="{% static 'weeb/img/logo.png' %}" alt="logo"></a>
             </div>
 
             <div class="navBtn">
@@ -42,7 +43,7 @@
                     <a href="#"><img src="{% static 'weeb/img/avatar.png' %}" alt="avatar"></a>
                 </div>
                 <div id="logoutBtn">
-                    <a href="#"><img src="{% static 'weeb/img/logout.png' %}" alt="logOut"></a>
+                    <a href="{% url 'logout' %}"><img src="{% static 'weeb/img/logout.png' %}" alt="logOut"></a>
                 </div>
             </div>
         </nav>
