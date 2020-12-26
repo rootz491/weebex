@@ -4,15 +4,14 @@
     <list default="true" id="3c6a80ed-6af2-44f7-a142-9905867503d5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/img/Screenshot_at_2020-12-24_13-06-37.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/img/Screenshot_at_2020-12-24_13-06-37_zd2A5VG.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/img/mobile.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/weeb/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/weeb/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weeb/templates/weeb/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/weeb/templates/weeb/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weeb/static/weeb/style/postDetailed.css" beforeDir="false" afterPath="$PROJECT_DIR$/weeb/static/weeb/style/postDetailed.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/weeb/templates/weeb/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/weeb/templates/weeb/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/weeb/templates/weeb/postDetailed.html" beforeDir="false" afterPath="$PROJECT_DIR$/weeb/templates/weeb/postDetailed.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weeb/templates/weeb/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/weeb/templates/weeb/profile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/weeb/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/weeb/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/weeb/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/weeb/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weebEx/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/weebEx/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/weebEx/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/weebEx/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,8 +22,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -46,12 +45,13 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/media" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/weeb/static/weeb" />
       <recent name="$PROJECT_DIR$/weeb/templates/weeb" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/weebEx" />
+      <recent name="$PROJECT_DIR$/media" />
     </key>
   </component>
   <component name="RunManager">

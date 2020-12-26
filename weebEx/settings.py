@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'weeb.apps.WeebConfig',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -118,11 +119,29 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+# STATIC_URL = '/static/'
+# STATIC_ROOT = BASE_DIR / 'staticfiles'
+#
+#
+# # media files
+#
+# MEDIA_ROOT = BASE_DIR / 'media'
+# MEDIA_URL = '/media/'
 
 
-# media files
 
-MEDIA_ROOT = BASE_DIR / 'media'
-MEDIA_URL = '/media/'
+# azure configs...
+
+DEFAULT_FILE_STORAGE = 'backend.custom_azure.AzureMediaStorage'
+STATICFILES_STORAGE = 'backend.custom_azure.AzureStaticStorage'
+
+STATIC_LOCATION = "static"
+MEDIA_LOCATION = "media"
+
+AZURE_ACCOUNT_NAME = "django491"
+AZURE_CUSTOM_DOMAIN = f'django491.blob.core.windows.net'
+STATIC_URL = f'https://django491.blob.core.windows.net/media/'
+MEDIA_URL = f'https://django491.blob.core.windows.net/static/'
+
+# after this look at backend folder, it is used to give key to azure acc. to upload static files.
+# after that, use command =>    ./manage.py collectstatic

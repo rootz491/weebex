@@ -36,7 +36,7 @@
                 <div class="post">
                     <a href="#userProfileLink"><h3 class="user">{{ post.user }}</h3></a>
                     {% load static %}
-                    <a href="#"><div class="img"><img src="{{ post.img.url }}" alt="user pic"></div></a>
+                    <a href="{% url 'weeb:postDetail' post.pk %}"><div class="img"><img src="{{ post.img.url }}" alt="user pic"></div></a>
                     <p class="caption">
                         {{ post.caption }}
                     </p>

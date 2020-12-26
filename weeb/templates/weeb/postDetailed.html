@@ -1,5 +1,8 @@
 {% extends 'weeb/base.html' %}
 
+
+
+
     {% block specific %}
         {% load static %}
     <!-- specific files -->
@@ -7,7 +10,7 @@
     {% endblock %}
 
 
-    {% block title %} post @ {{ post.user }} {% endblock %}
+    {% block title %} post @{{ post.user }} {% endblock %}
 
 
 <!--    content  =     obj: post   -->
@@ -41,7 +44,7 @@
                     <div class="interactBtn">
                         {% load static %}
                         <div><a href="#like"><img src="{% static 'weeb/img/like2.png' %}" alt="like button"></a><span>{{ post.likes.count }}</span></div>
-                        <div><a href="#inputComment"><img src="{% static 'weeb/img/comment.png' %}" alt="comment button"></a><span>{{ post.Comment.count }}</span></div>
+                        <div><a href="#inputComment"><img src="{% static 'weeb/img/comment.png' %}" alt="comment button"></a><span>{{ post.Comment_set.count }}</span></div>
                     </div>
                 </div>
 
@@ -57,7 +60,7 @@
                         </div>
                         {% else %}
 
-                            {% for comment in post.Comment %}
+                            {% for comment in post.Comment_set.all %}
                             <!--    comments     -->
                             <div class="comment">
                                 <h2 class="user">{{ comment.user }}</h2>

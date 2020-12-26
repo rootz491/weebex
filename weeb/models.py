@@ -19,7 +19,7 @@ class Profile(models.Model):
 
 
 class Post(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     img = models.ImageField(upload_to='img', help_text='try to upload a square picture.')
     caption = models.CharField(max_length=100, blank=True, help_text='length of caption should be less than 100 characters')
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='Unique ID for each post')
@@ -36,7 +36,7 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='user')
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='post')
     comment = models.CharField(max_length=150, null=False, help_text='length of comment should be less than 150 characters')
     likes = models.ManyToManyField(User, blank=True)
