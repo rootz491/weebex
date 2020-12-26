@@ -34,7 +34,7 @@
             {% for post in postObj %}
                 <!--    post    -->
                 <div class="post">
-                    <a href="#userProfileLink"><h3 class="user">{{ post.user }}</h3></a>
+                    <a href="{% url 'weeb:profile' post.profile.pk %}"><h3 class="user">{{ post.profile.username }}</h3></a>
                     {% load static %}
                     <a href="{% url 'weeb:postDetail' post.pk %}"><div class="img"><img src="{{ post.img.url }}" alt="user pic"></div></a>
                     <p class="caption">
@@ -42,7 +42,7 @@
                     </p>
                     <div class="interactBtn">
                         <div><a href="#like"><img src="{% static 'weeb/img/like1.png' %}" alt="like button"></a><span>{{ post.likes.count }}</span></div>
-                        <div><a href="#postDetailed/comment"><img src="{% static 'weeb/img/comment.png' %}" alt="comment button"></a><span>{{ post.Comment_set.count }}</span></div>
+                        <div><a href="#postDetailed/comment"><img src="{% static 'weeb/img/comment.png' %}" alt="comment button"></a><span>{{ post.comment__set.count }}</span></div>
                     </div>
                 </div>
 

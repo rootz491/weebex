@@ -40,7 +40,7 @@
                     <a href="#"><img src="{% static 'weeb/img/new post.png' %}" alt="new post"></a>
                 </div>
                 <div id="profileBtn">
-                    <a href="#"><img src="{% static 'weeb/img/avatar.png' %}" alt="avatar"></a>
+                    <a href="{% url 'weeb:profile' user.pk %}"><img src="{% static 'weeb/img/avatar.png' %}" alt="avatar"></a>
                 </div>
                 <div id="logoutBtn">
                     <a href="{% url 'logout' %}"><img src="{% static 'weeb/img/logout.png' %}" alt="logOut"></a>

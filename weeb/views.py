@@ -50,3 +50,5 @@ def postDetail(request, pk):
 
 class ProfileView(generic.DetailView):
     model = Profile
+    template_name = 'weeb/profile.html'
+    context_object_name = 'profile'

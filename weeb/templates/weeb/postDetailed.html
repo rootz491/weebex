@@ -3,14 +3,14 @@
 
 
 
-    {% block specific %}
+{% block specific %}
         {% load static %}
     <!-- specific files -->
     <link rel="stylesheet" href="{% static 'weeb/style/postDetailed.css' %}">
-    {% endblock %}
+{% endblock %}
 
 
-    {% block title %} post @{{ post.user }} {% endblock %}
+{% block title %} post @{{ post.profile.username }} {% endblock %}
 
 
 <!--    content  =     obj: post   -->
@@ -25,7 +25,7 @@
 
                 <div class="postInfo">
                     <div class="options">
-                        <h1 class="user">{{ post.user }}</h1>
+                        <h1 class="user">{{ post.profile.username }}</h1>
 
                         <!-- only if user is owner of post -->
                         {% if post.user == user %}
@@ -44,7 +44,7 @@
                     <div class="interactBtn">
                         {% load static %}
                         <div><a href="#like"><img src="{% static 'weeb/img/like2.png' %}" alt="like button"></a><span>{{ post.likes.count }}</span></div>
-                        <div><a href="#inputComment"><img src="{% static 'weeb/img/comment.png' %}" alt="comment button"></a><span>{{ post.Comment_set.count }}</span></div>
+                        <div><a href="#inputComment"><img src="{% static 'weeb/img/comment.png' %}" alt="comment button"></a><span>{{ post.comment__set.count }}</span></div>
                     </div>
                 </div>
 
@@ -54,16 +54,16 @@
 
                     <div class="commentWrapper">
                         <!--  no comment warning  -->
-                        {% if post.Comment_set.count == 0 %}
+                        {% if post.comment__set.count == 0 %}
                         <div class="comment">
                             <h1>Be the First one to comment.</h1>
                         </div>
                         {% else %}
 
-                            {% for comment in post.Comment_set.all %}
+                            {% for comment in post.comment__set.all %}
                             <!--    comments     -->
                             <div class="comment">
-                                <h2 class="user">{{ comment.user }}</h2>
+                                <h2 class="user">{{ comment.profile.username }}</h2>
                                 <p class="content">    {{ comment.comment }}     </p>
                             </div>
                             {% endfor %}

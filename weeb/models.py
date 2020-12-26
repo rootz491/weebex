@@ -36,10 +36,14 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='user')
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='profile')
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='post')
     comment = models.CharField(max_length=150, null=False, help_text='length of comment should be less than 150 characters')
     likes = models.ManyToManyField(User, blank=True)
+    createdAt = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-createdAt']
 
     def __str__(self):
-        return 'comment @' + str(self.user) + ' ' + str(self.id)
+        return 'comment @' + str(self.profile.username) + ' ' + str(self.id)

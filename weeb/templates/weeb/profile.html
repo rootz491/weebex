@@ -3,9 +3,10 @@
 
 {% block specific %}
     <!-- specific files -->
-    <link rel="stylesheet" href="style/profile.css">
-    <link rel="stylesheet" href="style/newPost.css">
-    <script defer src="js/newPost.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'weeb/style/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'weeb/style/newPost.css' %}">
+    <script defer src="{% static 'weeb/js/newPost.js' %}"></script>
 {% endblock %}
 
 
@@ -15,7 +16,7 @@
 
 
 {% block nonContent %}
-    {% extends 'weeb/newpost.html' %}
+    {% include 'weeb/newPost.html' %}
 {% endblock %}
 
 
@@ -25,14 +26,18 @@
             <div class="profileWrapper">
 
                 <div class="profileCard">
-                    <h1>profile.username</h1>
-                    <p>profile.email</p>
+                    <h1>{{ profile.username }}</h1>
+                    {% if profile.owner == user %}
+                    <p>{{ profile.user.email }}</p>
+                    {% endif %}
                     <p>{{ profile.fullName }}</p>
-                    <h3>twitter handle: <span><a href="https://www.twitter.com/{{ profile.twitterHandle }}/">{{ profile.twitterHandle }}</a></span></h3>
+                    <p style="color: var(--greyTxt);">{{ profile.bio }}</p>
+                    <h2>twitter handle: <a style="color: var(--Lblue);" target="_blank" href="https://www.twitter.com/{{ profile.twitterHandle }}/">{{ profile.twitterHandle }}</a></h2>
+                    <p>Joined on: <span>{{ profile.joinedOn.date }}</span></p>
                     {% if profile.owner == user %}
                     <form action="#deleteUser" method="POST">
                          {% csrf_token %}
-                        <input id="deketeBtn" type="submit" value="delete user">
+                        <input id="deleteBtn" type="submit" value="delete user">
                     </form>
                     {% endif %}
                 </div>
