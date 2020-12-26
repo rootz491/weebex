@@ -12,6 +12,7 @@ urlpatterns = [
     # class based views
     path(r'', views.IndexView.as_view(), name='index'),
     path(r'post/<str:pk>/', views.PostDetailedView.as_view(), name='postDetail'),
+    path(r'post/<str:pk>/delete', views.PostDeleteView.as_view(), name='postDelete'),
     path(r'<str:pk>/', views.ProfileView.as_view(), name='profile'),
 ]
 

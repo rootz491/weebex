@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, reverse
 from django.http import HttpResponse
+from django.urls import reverse_lazy
 # generic
 from django.views import generic
 from .models import *
@@ -8,12 +9,18 @@ from .models import *
 
 
 
-class IndexView(generic.ListView):
-    model = Post
-    template_name = 'weeb/home.html'
-    context_object_name = 'postObj'
 
 
+
+#   function based
+
+def postDetail(request, pk):
+    data = Post.objects.filter(pk=pk)
+    print(data[0])
+    context = {
+        'post': data[0],
+    }
+    return render(request, 'weeb/postDetailed.html', context)
 
 
 def index(request):
@@ -27,23 +34,35 @@ def index(request):
 
 
 
+
+
+
+
+#   class based views
+
+class IndexView(generic.ListView):
+    model = Post
+    template_name = 'weeb/home.html'
+    context_object_name = 'postObj'
+
+
+
 class PostDetailedView(generic.DetailView):
     model = Post
     template_name = 'weeb/postDetailed.html'
     context_object_name = 'post'
 
 
+class PostDeleteView(generic.DeleteView):
+    model = Post
+    success_url = reverse_lazy('weeb:index')
 
 
 
 
-def postDetail(request, pk):
-    data = Post.objects.filter(pk=pk)
-    print(data[0])
-    context = {
-        'post': data[0],
-    }
-    return render(request, 'weeb/postDetailed.html', context)
+
+
+
 
 
 

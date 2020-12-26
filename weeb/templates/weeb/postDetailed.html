@@ -28,8 +28,8 @@
                         <h1 class="user">{{ post.profile.username }}</h1>
 
                         <!-- only if user is owner of post -->
-                        {% if post.user == user %}
-                        <form method="POST" action="#deletePost">
+                        {% if post.profile.owner == user %}
+                        <form method="POST" action="{% url 'weeb:postDelete' post.pk %}">
                             {% csrf_token %}
                             {% load static %}
                             <button class="deleteBtn" type="submit"><img src="{% static 'weeb/img/delete.png' %}" alt="delete btn"></button>

@@ -18,6 +18,7 @@ class Profile(models.Model):
 
 
 
+
 class Post(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     img = models.ImageField(upload_to='img', help_text='try to upload a square picture.')
