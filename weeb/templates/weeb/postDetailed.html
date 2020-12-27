@@ -73,9 +73,9 @@
 
                     <!-- comment input box -->
                     <div class="commentInput">
-                        <form action="#postComment" method="POST">
+                        <form action="{% url 'weeb:postComment' post.pk %}" method="POST">
                             {% csrf_token %}
-                            <input placeholder="comment here" id="inputComment" type="text" name="comment" id="commentInput">
+                            <input placeholder="comment here" id="inputComment" type="text" name="comment">
                             <input class="sendBtn" type="submit" value="send">
                         </form>
                     </div>

@@ -15,7 +15,7 @@ urlpatterns = [
     path(r'post/<str:pk>/', views.PostDetailedView.as_view(), name='postDetail'),
     path(r'post/<str:pk>/delete', views.PostDeleteView.as_view(), name='postDelete'),
     path(r'post/<str:id>/like', views.PostLike, name='postLike'),
-    # path(r'post/<str:id>/dislike', views.PostDislike, name='postDislike'),
+    path(r'post/<str:pk>/comment', views.PostComment, name='postComment'),
     path(r'<str:pk>/', views.ProfileView.as_view(), name='profile'),
 
     path(r'favicon.ico', RedirectView.as_view(url='weeb/static/img/favicon.ico')),

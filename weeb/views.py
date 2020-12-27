@@ -1,4 +1,4 @@
-from django.shortcuts import render, reverse, redirect
+from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 # generic
@@ -64,12 +64,35 @@ class ProfileView(generic.DetailView):
 
 
 
+# comment on posts
+def PostComment(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    profile = get_object_or_404(Profile, pk=request.user)
 
+    if request.method == 'POST':
+        comment = Comment()
+
+        comment.comment = request.POST['comment']
+        comment.post = post
+        comment.profile = profile
+
+        comment.save()
+
+        return render(request, 'weeb/postDetailed.html', {'post': post})
+
+
+# like on posts
 def PostLike(request, id):
     post = Post.objects.get(pk=id)
-    if post.is_liked(request.user):
+    liked = False
+    for user in post.likes.all():
+        if user == request.user:
+            liked = True
+            break
+    if liked:
         post.likes.remove(request.user)
     else:
         post.likes.add(request.user)
     post.save()
     return redirect('weeb:index')
+

@@ -39,12 +39,7 @@ class Post(models.Model):
     def __str__(self):
         return 'post @' + str(self.createdAt)
 
-    # checking if post is liked by user
-    def is_liked(self, user):
-        for peep in post.likes.all():
-            if peep == user:
-                return True
-        return False
+
 
     # customizing image before uploading
     def save(self):
@@ -68,6 +63,8 @@ class Post(models.Model):
                                         sys.getsizeof(output), None)
 
         super(Post, self).save()
+
+
 
 
 class Comment(models.Model):
