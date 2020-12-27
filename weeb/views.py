@@ -1,4 +1,4 @@
-from django.shortcuts import render, reverse
+from django.shortcuts import render, reverse, redirect
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 # generic
@@ -46,7 +46,6 @@ class IndexView(generic.ListView):
     context_object_name = 'postObj'
 
 
-
 class PostDetailedView(generic.DetailView):
     model = Post
     template_name = 'weeb/postDetailed.html'
@@ -58,16 +57,19 @@ class PostDeleteView(generic.DeleteView):
     success_url = reverse_lazy('weeb:index')
 
 
-
-
-
-
-
-
-
-
-
 class ProfileView(generic.DetailView):
     model = Profile
     template_name = 'weeb/profile.html'
     context_object_name = 'profile'
+
+
+
+
+def PostLike(request, id):
+    post = Post.objects.get(pk=id)
+    if post.is_liked(request.user):
+        post.likes.remove(request.user)
+    else:
+        post.likes.add(request.user)
+    post.save()
+    return redirect('weeb:index')

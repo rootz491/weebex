@@ -11,7 +11,7 @@
 
 
 {% block title %}
-    Weeb-Ex
+    @{{ profile.username }}
 {% endblock %}
 
 
@@ -28,11 +28,12 @@
                 <div class="profileCard">
                     <h1>{{ profile.username }}</h1>
                     {% if profile.owner == user %}
-                    <p>{{ profile.user.email }}</p>
+                    <p><small>{{ user.email }}</small></p>
                     {% endif %}
                     <p>{{ profile.fullName }}</p>
                     <p style="color: var(--greyTxt);">{{ profile.bio }}</p>
-                    <h2>twitter handle: <a style="color: var(--Lblue);" target="_blank" href="https://www.twitter.com/{{ profile.twitterHandle }}/">{{ profile.twitterHandle }}</a></h2>
+                    <h2>twitter: <a style="color: var(--Lblue);" target="_blank" href="https://www.twitter.com/{{ profile.twitterHandle }}/">{{ profile.twitterHandle }}</a></h2>
+                    <p>Posts: <span>{{ profile.post_set.count }}</span></p>
                     <p>Joined on: <span>{{ profile.joinedOn.date }}</span></p>
                     {% if profile.owner == user %}
                     <form action="#deleteUser" method="POST">
@@ -46,19 +47,19 @@
 
             <div class="postWrapper">
 
-            {% if user.post.count == 0 %}
+            {% if profile.post_set.count == 0 %}
 <!--            no post message     -->
-                <h1 class="noPostMsg">Please post photos to get some display here.</h1>
+                <h1 class="noPostMsg">Please post photos to get them displayed here.</h1>
             {% else %}
 <!--            actual post     -->
-                {% for post in user.post_set.all %}
-                <div><a href="#postDetailed">
+                {% for post in profile.post_set.all %}
+                <div><a href="{% url 'weeb:postDetail' post.pk %}">
                     {% load static %}
-                    <div class="img"><img src="{% static 'weeb/media/me.jpg' %}" alt="post thumbnail"></div>
+                    <div class="img"><img src="{{ post.img.url }}" alt="post thumbnail"></div>
                     </a>
                     <div class="interactBtn">
                         <div><a href="#like"><img src="{% static 'weeb/img/like2.png' %}" alt="like button"></a><span>{{ post.likes.count }}</span></div>
-                        <div><a href="#postDetailed/comment"><img src="{% static 'weeb/img/comment.png' %}" alt="comment button"></a><span>3</span></div>
+                        <div><a href="#postDetailed/comment"><img src="{% static 'weeb/img/comment.png' %}" alt="comment button"></a><span>{{ post.post_comment.count }}</span></div>
                     </div>
                 </div>
                 {% endfor %}

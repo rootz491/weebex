@@ -23,7 +23,14 @@
     {% block nonContent %}
         {% include 'weeb/newPost.html' %}
     {% endblock %}
-    
+
+
+<!--{% if post.is_liked %}-->
+<!--    <div><a href="{% url 'weeb:postDislike' post.pk %}"><img src="{% static 'weeb/img/like1.png' %}" alt="like button"></a><span>{{ post.likes.count }}</span></div>-->
+<!--{% else %}-->
+<!--    <div><a href="{% url 'weeb:postLike' post.pk %}"><img src="{% static 'weeb/img/like2.png' %}" alt="like button"></a><span>{{ post.likes.count }}</span></div>-->
+<!--{% endif %}-->
+
 
 
         <!-- content -->
@@ -41,8 +48,8 @@
                         {{ post.caption }}
                     </p>
                     <div class="interactBtn">
-                        <div><a href="#like"><img src="{% static 'weeb/img/like1.png' %}" alt="like button"></a><span>{{ post.likes.count }}</span></div>
-                        <div><a href="#postDetailed/comment"><img src="{% static 'weeb/img/comment.png' %}" alt="comment button"></a><span>{{ post.comment__set.count }}</span></div>
+                        <div><a href="{% url 'weeb:postLike' post.pk %}"><img src="{% static 'weeb/img/like1.png' %}" alt="like button"></a><span>{{ post.likes.count }}</span></div>
+                        <div><a href="{% url 'weeb:postDetail' post.pk %}"><img src="{% static 'weeb/img/comment.png' %}" alt="comment button"></a><span>{{ post.post_comment.count }}</span></div>
                     </div>
                 </div>
 

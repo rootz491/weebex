@@ -32,7 +32,7 @@ body {
 }
 
 .profileCard {
-    max-width: 80%;
+    min-width: 80%;
     padding: 1em;
     margin: auto;
     border: 2px solid var(--secBg);
