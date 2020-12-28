@@ -16,8 +16,8 @@ class Profile(models.Model):
     owner = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     username = models.CharField(max_length=30, help_text='should only contains alphabetic or numeric character.')
     fullName = models.CharField(max_length=60, help_text='60 characters or less.')  # new
-    bio = models.TextField(max_length=140, help_text='140 characters or less.')  # new
-    twitterHandle = models.CharField(max_length=40, help_text='40 characters or less.')  # new
+    bio = models.TextField(max_length=140, help_text='140 characters or less.', blank=True)  # new
+    twitterHandle = models.CharField(max_length=40, help_text='40 characters or less.', blank=True)  # new
     joinedOn = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -39,8 +39,6 @@ class Post(models.Model):
     def __str__(self):
         return 'post @' + str(self.createdAt)
 
-
-
     # customizing image before uploading
     def save(self):
         # Opening the uploaded image
@@ -51,8 +49,14 @@ class Post(models.Model):
         # Resize/modify the image
         # im = im.resize((500, 500))
 
-        # testing
-        print(sys.getsizeof(output))
+        original_width, original_height = im.size
+        aspect_ratio = round(original_width / original_height)
+
+        # desired_height = 100  # Edit to add your desired height in pixels
+        # desired_width = desired_height * aspect_ratio
+
+        # Resize the image
+        # im = im.resize((desired_width, desired_height))
 
         # after modifications, save it to the output
         im.save(output, format='JPEG', optimize=True, quality=40)
@@ -63,8 +67,6 @@ class Post(models.Model):
                                         sys.getsizeof(output), None)
 
         super(Post, self).save()
-
-
 
 
 class Comment(models.Model):

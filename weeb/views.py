@@ -1,5 +1,5 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse_lazy
 # generic
 from django.views import generic
@@ -63,6 +63,11 @@ class ProfileView(generic.DetailView):
     context_object_name = 'profile'
 
 
+class UploadPostView(generic.CreateView):
+    model = Post
+    template_name = 'weeb/home.html'
+
+
 
 # comment on posts
 def PostComment(request, pk):
@@ -81,6 +86,7 @@ def PostComment(request, pk):
         return render(request, 'weeb/postDetailed.html', {'post': post})
 
 
+
 # like on posts
 def PostLike(request, id):
     post = Post.objects.get(pk=id)
@@ -94,5 +100,5 @@ def PostLike(request, id):
     else:
         post.likes.add(request.user)
     post.save()
-    return redirect('weeb:index')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 

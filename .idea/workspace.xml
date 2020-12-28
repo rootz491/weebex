@@ -5,9 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/weeb/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/weeb/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weeb/templates/weeb/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/weeb/templates/weeb/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weeb/templates/weeb/postDetailed.html" beforeDir="false" afterPath="$PROJECT_DIR$/weeb/templates/weeb/postDetailed.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weeb/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/weeb/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/weeb/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/weeb/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
