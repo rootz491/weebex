@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 # generic
 from django.views import generic
 from .models import *
+from .forms import PostForm
 
 # Create your views here.
 
@@ -63,9 +64,11 @@ class ProfileView(generic.DetailView):
     context_object_name = 'profile'
 
 
-class UploadPostView(generic.CreateView):
+class PostView(generic.CreateView):
+    template_name = 'weeb/post_form.html'
     model = Post
-    template_name = 'weeb/home.html'
+    fields = ['img', 'caption']
+
 
 
 
@@ -102,3 +105,29 @@ def PostLike(request, id):
     post.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
+
+def UploadPost(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    profile = get_object_or_404(Profile, pk=user)
+
+
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+
+
+        # check whether it's valid:
+        if form.is_valid():
+            newPost = Post(commit=False)
+            cd = form.cleaned_data
+            newPost.img = cd['img']
+            newPost.caption = cd['caption']
+            newPost.profile = profile
+            newPost.save()
+
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+        print(form.errors)
+        return render(request, 'weeb/message.html', context={'message': 'Form is not valid!'})
+
+    return render(request, 'weeb/message.html', context={'message': 'Make a POST request to upload a form'})

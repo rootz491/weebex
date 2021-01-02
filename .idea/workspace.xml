@@ -4,6 +4,11 @@
     <list default="true" id="3c6a80ed-6af2-44f7-a142-9905867503d5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weeb/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/weeb/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weeb/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/weeb/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weeb/templates/weeb/newPost.html" beforeDir="false" afterPath="$PROJECT_DIR$/weeb/templates/weeb/newPost.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weeb/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/weeb/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weeb/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/weeb/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -83,6 +88,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="483" y="189" width="624" height="522" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1609480400366">
+      <screen x="0" y="26" width="1600" height="850" />
+    </state>
+    <state x="483" y="189" width="624" height="522" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.26.1600.850@0.26.1600.850" timestamp="1609480400366" />
     <state x="289" y="84" key="SettingsEditor" timestamp="1608728118054">
       <screen x="0" y="26" width="1600" height="850" />
     </state>

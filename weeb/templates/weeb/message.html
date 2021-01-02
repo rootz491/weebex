@@ -1,0 +1,22 @@
+{% extends 'weeb/base.html' %}
+
+
+{% block title %}
+    Warning
+{% endblock %}
+
+
+{% block nonContent %}
+    <style>
+        .content {
+            display: grid;
+            place-content: center;
+            height: 60vh;
+        }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+    <h1>{{ message }}</h1>
+{% endblock %}

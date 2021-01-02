@@ -39,6 +39,9 @@ class Post(models.Model):
     def __str__(self):
         return 'post @' + str(self.createdAt)
 
+    def success_url(self):
+        return reverse('weeb:index')
+
     # customizing image before uploading
     def save(self):
         # Opening the uploaded image
@@ -49,8 +52,10 @@ class Post(models.Model):
         # Resize/modify the image
         # im = im.resize((500, 500))
 
-        original_width, original_height = im.size
-        aspect_ratio = round(original_width / original_height)
+        # original_width, original_height = im.size
+        # print((original_height*original_width)/1024)
+        # aspect_ratio = original_width / original_height
+        # print(aspect_ratio)
 
         # desired_height = 100  # Edit to add your desired height in pixels
         # desired_width = desired_height * aspect_ratio
