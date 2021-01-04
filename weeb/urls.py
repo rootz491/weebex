@@ -11,15 +11,29 @@ urlpatterns = [
     # path(r'post/<str:pk>/', views.postDetail, name='postDetail'),
 
     # class based views
+
+    # home page
     path(r'', views.IndexView.as_view(), name='index'),
+
+    # detailed post
     path(r'post/<str:pk>/', views.PostDetailedView.as_view(), name='postDetail'),
+
+    # operations on post
     path(r'post/<str:pk>/delete', views.PostDeleteView.as_view(), name='postDelete'),
     path(r'post/<str:id>/like', views.PostLike, name='postLike'),
     path(r'post/<str:pk>/comment', views.PostComment, name='postComment'),
-    path(r'<str:pk>/', views.ProfileView.as_view(), name='profile'),
-    # path(r'<str:pk>/upload/post', views.UploadPost, name='uploadPost'),
-    path(r'<str:pk>/upload/post', views.PostView.as_view(), name='uploadPost'),
 
+    # profile
+    path(r'<str:username>/', views.profile, name='profile'),
+    # path(r'<str:pk>/', views.ProfileView.as_view(), name='profile'),
+
+    # post upload
+    path(r'post/upload', views.UploadPost, name='uploadPost'),
+    # path(r'post/upload', views.PostView.as_view(), name='uploadPost'),
+
+    # error handling
     path(r'favicon.ico', RedirectView.as_view(url='weeb/static/img/favicon.ico')),
 ]
+
+
 

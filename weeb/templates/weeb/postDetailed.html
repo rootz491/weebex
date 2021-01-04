@@ -10,7 +10,7 @@
 {% endblock %}
 
 
-{% block title %} post @{{ post.profile.username }} {% endblock %}
+{% block title %} post @{{ post.user.username }} {% endblock %}
 
 
 <!--    content  =     obj: post   -->
@@ -25,10 +25,10 @@
 
                 <div class="postInfo">
                     <div class="options">
-                        <h1 class="user"><a href="{% url 'weeb:profile' post.profile.owner.pk %}">{{ post.profile.username }}</a></h1>
+                        <h1 class="user"><a href="{% url 'weeb:profile' post.user %}">{{ post.user.username }}</a></h1>
 
                         <!-- only if user is owner of post -->
-                        {% if post.profile.owner == user %}
+                        {% if post.user == user %}
                         <form method="POST" action="{% url 'weeb:postDelete' post.pk %}">
                             {% csrf_token %}
                             {% load static %}
@@ -63,7 +63,7 @@
                             {% for comment in post.post_comment.all %}
                             <!--    comments     -->
                             <div class="comment">
-                                <h4 class="user"><a href="{% url 'weeb:profile' comment.profile.owner.pk %}"><span>{{ comment.profile.username }}</span></a></h4>
+                                <h4 class="user"><a href="{% url 'weeb:profile' comment.user %}"><span>{{ comment.user.username }}</span></a></h4>
                                 <p class="content">    {{ comment.comment }}     </p>
                             </div>
                             {% endfor %}

@@ -6,7 +6,6 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'weeb/style/profile.css' %}">
     <link rel="stylesheet" href="{% static 'weeb/style/newPost.css' %}">
-    <script defer src="{% static 'weeb/js/newPost.js' %}"></script>
 {% endblock %}
 
 
@@ -15,9 +14,6 @@
 {% endblock %}
 
 
-{% block nonContent %}
-    {% include 'weeb/newPost.html' %}
-{% endblock %}
 
 
 
@@ -27,15 +23,15 @@
 
                 <div class="profileCard">
                     <h1>{{ profile.username }}</h1>
-                    {% if profile.owner == user %}
+                    {% if profile.user == user %}
                     <p><small>{{ user.email }}</small></p>
                     {% endif %}
                     <p>{{ profile.fullName }}</p>
                     <p style="color: var(--greyTxt);">{{ profile.bio }}</p>
                     <h2>twitter: <a style="color: var(--Lblue);" target="_blank" href="https://www.twitter.com/{{ profile.twitterHandle }}/">{{ profile.twitterHandle }}</a></h2>
-                    <p>Posts: <span>{{ profile.post_set.count }}</span></p>
+                    <p>Posts: <span>{{ profile.user.post_set.count }}</span></p>
                     <p>Joined on: <span>{{ profile.joinedOn.date }}</span></p>
-                    {% if profile.owner == user %}
+                    {% if profile.user == user %}
                     <form action="#deleteUser" method="POST">
                          {% csrf_token %}
                         <input id="deleteBtn" type="submit" value="delete user">
@@ -47,12 +43,12 @@
 
             <div class="postWrapper">
 
-            {% if profile.post_set.count == 0 %}
+            {% if profile.user.post_set.count == 0 %}
 <!--            no post message     -->
                 <h1 class="noPostMsg">Please post photos to get them displayed here.</h1>
             {% else %}
 <!--            actual post     -->
-                {% for post in profile.post_set.all %}
+                {% for post in profile.user.post_set.all %}
                 <div><a href="{% url 'weeb:postDetail' post.pk %}">
                     {% load static %}
                     <div class="img"><img src="{{ post.img.url }}" alt="post thumbnail"></div>

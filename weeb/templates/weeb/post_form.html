@@ -2,7 +2,7 @@
 
 
 {% block title %}
-    Warning
+    upload post
 {% endblock %}
 
 
@@ -61,5 +61,11 @@
             <input type="submit" value="post">
         </div>
     </form>
+
+
+    <span>
+        {{ form.errors }}
+        {{ form.non_field_errors }}
+    </span>
 
 {% endblock %}

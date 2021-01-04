@@ -8,28 +8,13 @@
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static 'weeb/style/main.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'weeb/style/newPost.css' %}">
-        <script defer src="{% static 'weeb/js/newPost.js' %}"></script>
 
-    <!-- testing script -->
-<!--    <script defer src="{% static 'weeb/js/createPost.js' %}"></script>-->
     {% endblock %}
 
 
     {% block title %}
         home
     {% endblock %}
-
-
-    {% block nonContent %}
-        {% include 'weeb/newPost.html' %}
-    {% endblock %}
-
-
-<!--{% if post.is_liked %}-->
-<!--    <div><a href="{% url 'weeb:postDislike' post.pk %}"><img src="{% static 'weeb/img/like1.png' %}" alt="like button"></a><span>{{ post.likes.count }}</span></div>-->
-<!--{% else %}-->
-<!--    <div><a href="{% url 'weeb:postLike' post.pk %}"><img src="{% static 'weeb/img/like2.png' %}" alt="like button"></a><span>{{ post.likes.count }}</span></div>-->
-<!--{% endif %}-->
 
 
 
@@ -41,7 +26,7 @@
             {% for post in postObj %}
                 <!--    post    -->
                 <div class="post">
-                    <a href="{% url 'weeb:profile' post.profile.pk %}"><h3 class="user">{{ post.profile.username }}</h3></a>
+                    <a href="{% url 'weeb:profile' post.user %}"><h3 class="user">{{ post.user.username }}</h3></a>
                     {% load static %}
                     <a href="{% url 'weeb:postDetail' post.pk %}"><div class="img"><img src="{{ post.img.url }}" alt="user pic"></div></a>
                     <p class="caption">

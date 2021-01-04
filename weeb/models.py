@@ -13,7 +13,7 @@ import sys  # to get size of output file.
 
 
 class Profile(models.Model):
-    owner = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     username = models.CharField(max_length=30, help_text='should only contains alphabetic or numeric character.')
     fullName = models.CharField(max_length=60, help_text='60 characters or less.')  # new
     bio = models.TextField(max_length=140, help_text='140 characters or less.', blank=True)  # new
@@ -25,7 +25,7 @@ class Profile(models.Model):
 
 
 class Post(models.Model):
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     img = models.ImageField(upload_to='img', help_text='try to upload a square picture.')
     caption = models.CharField(max_length=100, blank=True,
                                help_text='length of caption should be less than 100 characters')
@@ -39,8 +39,8 @@ class Post(models.Model):
     def __str__(self):
         return 'post @' + str(self.createdAt)
 
-    def success_url(self):
-        return reverse('weeb:index')
+    def get_absolute_url(self):
+                return reverse('weeb:postDetail', kwargs={'pk': self.pk})
 
     # customizing image before uploading
     def save(self):
@@ -48,20 +48,6 @@ class Post(models.Model):
         im = Image.open(self.img)
 
         output = BytesIO()
-
-        # Resize/modify the image
-        # im = im.resize((500, 500))
-
-        # original_width, original_height = im.size
-        # print((original_height*original_width)/1024)
-        # aspect_ratio = original_width / original_height
-        # print(aspect_ratio)
-
-        # desired_height = 100  # Edit to add your desired height in pixels
-        # desired_width = desired_height * aspect_ratio
-
-        # Resize the image
-        # im = im.resize((desired_width, desired_height))
 
         # after modifications, save it to the output
         im.save(output, format='JPEG', optimize=True, quality=40)
@@ -75,7 +61,7 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='user_comment')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_comment')
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='post_comment')
     comment = models.CharField(max_length=150, null=False,
                                help_text='length of comment should be less than 150 characters')

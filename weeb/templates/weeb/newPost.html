@@ -6,7 +6,7 @@
             <img id="exitPost" src="{% static 'weeb/img/exit.png' %}" alt="exit">
         </div>
 
-        <form id="post" action="{% url 'weeb:uploadPost' user.pk %}" method="POST" enctype="multipart/form-data">
+        <form id="post" action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="imgInput">
                 <label for="imgFile">Image</label>

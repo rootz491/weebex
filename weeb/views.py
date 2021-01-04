@@ -58,10 +58,10 @@ class PostDeleteView(generic.DeleteView):
     success_url = reverse_lazy('weeb:index')
 
 
-class ProfileView(generic.DetailView):
-    model = Profile
-    template_name = 'weeb/profile.html'
-    context_object_name = 'profile'
+# class ProfileView(generic.DetailView):
+#     model = Profile
+#     template_name = 'weeb/profile.html'
+#     context_object_name = 'profile'
 
 
 class PostView(generic.CreateView):
@@ -70,6 +70,13 @@ class PostView(generic.CreateView):
     fields = ['img', 'caption']
 
 
+
+
+
+def profile(request, username):
+    u = get_object_or_404(User, username=username)
+    p = get_object_or_404(Profile, pk=u)
+    return render(request, 'weeb/profile.html', {'profile': p})
 
 
 # comment on posts
@@ -106,28 +113,25 @@ def PostLike(request, id):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
-def UploadPost(request, pk):
-    user = get_object_or_404(User, pk=pk)
-    profile = get_object_or_404(Profile, pk=user)
-
-
+def UploadPost(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
-        form = PostForm(request.POST)
-
+        form = PostForm(request.POST or None, request.FILES or None)
 
         # check whether it's valid:
         if form.is_valid():
-            newPost = Post(commit=False)
+            newPost = form.save(commit=False)
             cd = form.cleaned_data
             newPost.img = cd['img']
             newPost.caption = cd['caption']
-            newPost.profile = profile
+            newPost.user = request.user
             newPost.save()
 
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+            return render(request, 'weeb/postDetailed.html', {'post': newPost})
+
 
         print(form.errors)
-        return render(request, 'weeb/message.html', context={'message': 'Form is not valid!'})
+        return render(request, 'weeb/post_form.html', context={'form': form, 'form.error': form.errors})
 
-    return render(request, 'weeb/message.html', context={'message': 'Make a POST request to upload a form'})
+    form = PostForm()
+    return render(request, 'weeb/post_form.html', {'form': form})
