@@ -35,3 +35,8 @@ class PostForm(forms.ModelForm):
     class Meta:
         fields = ['img', 'caption']
         model = Post
+
+class RegisterForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password']

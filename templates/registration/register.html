@@ -1,0 +1,47 @@
+{% extends 'weeb/base.html' %}
+
+
+{% block specific %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'weeb/style/auth_form.css' %}">
+{% endblock %}
+
+
+{% block title %}
+    register
+{% endblock %}
+
+
+{% block nonContent %}
+    <style>
+        .content {
+            display: grid;
+            place-content: center;
+            height: 60vh;
+        }
+    </style>
+
+
+
+
+
+
+
+{% endblock %}
+
+
+{% block content %}
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="text" placeholder="username" name="username" required>
+
+            <input placeholder="Email address" name="email" type="email" required>
+
+            <input placeholder="password" type="password" name="password" required>
+            <div id="buttons">
+                <button class="button" type="submit">register</button>
+
+            </div>
+        </form>
+        <p style="text-align: center; font-size: 2em; color: red;">{{ error_message }}</p>
+{% endblock %}

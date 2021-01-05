@@ -36,6 +36,7 @@
             </div>
 
             <div class="navBtn">
+                {% if user.is_authenticated %}
                 <div id="newPostBtn">
                     <a href="{% url 'weeb:uploadPost' %}"><img src="{% static 'weeb/img/new post.png' %}" alt="new post"></a>
                 </div>
@@ -45,6 +46,14 @@
                 <div id="logoutBtn">
                     <a href="{% url 'logout' %}"><img src="{% static 'weeb/img/logout.png' %}" alt="logOut"></a>
                 </div>
+                {% else %}
+                <div id="loginBtn">
+                     <a href="{% url 'login' %}"><img src="{% static 'weeb/img/signin.png' %}" alt="logIn"></a>
+                </div>
+                <div id="registerBtn">
+                     <a href="{% url 'weeb:register' %}"><img src="{% static 'weeb/img/register.png' %}" alt="signUp"></a>
+                </div>
+                {% endif %}
             </div>
         </nav>
 

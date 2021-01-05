@@ -24,12 +24,15 @@ urlpatterns = [
     path(r'post/<str:pk>/comment', views.PostComment, name='postComment'),
 
     # profile
-    path(r'<str:username>/', views.profile, name='profile'),
+    path(r'<str:username>', views.profile, name='profile'),
     # path(r'<str:pk>/', views.ProfileView.as_view(), name='profile'),
 
     # post upload
     path(r'post/upload', views.UploadPost, name='uploadPost'),
     # path(r'post/upload', views.PostView.as_view(), name='uploadPost'),
+
+    # register
+    path(r'account/register', views.registerUser, name='register'),
 
     # error handling
     path(r'favicon.ico', RedirectView.as_view(url='weeb/static/img/favicon.ico')),

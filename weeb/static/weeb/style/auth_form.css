@@ -1,0 +1,64 @@
+form {
+    display: grid;
+    gap: 2em;
+    width: 80%;
+    margin: 5em auto;
+}
+
+
+form input {
+    color: var(--greyTxt);
+    width: 100%;
+    padding: 10px 6px;
+    font-size: 20px;
+    border: 1px solid #999999;
+}
+
+
+#buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+}
+
+
+form .button {
+    padding: 8px 14px;
+    margin: auto;
+    font-size: 20px;
+    background: none;
+    border: none;
+    color: var(--lPuple);
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 1000px) {
+    form {
+        margin: 0;
+        margin-bottom: 5em;
+        width: 100%;
+
+    }
+}
+
+@media screen and (max-width: 600px) {
+    input {
+        padding: .3em;
+        font-size: 20px;
+    }
+    .button {
+        font-size: 18px;
+        padding: .5em
+    }
+    #buttons {
+        flex-direction: column;
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    input, textarea, .button {
+        font-size: 16px;
+    }
+}

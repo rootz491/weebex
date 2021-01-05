@@ -1,0 +1,23 @@
+{% extends "weeb/base.html" %}
+
+{% block title %}
+    logout
+{% endblock %}
+
+
+{% block nonContent %}
+    <style>
+        .content {
+            display: grid;
+            place-content: center;
+            height: 60vh;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="m-5">Logged out!</h1>
+  <a href="{% url 'login'%}">Click here to login again.</a>
+
+{% endblock %}
