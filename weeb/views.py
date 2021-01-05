@@ -82,14 +82,12 @@ def profile(request, username):
 # comment on posts
 def PostComment(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    profile = get_object_or_404(Profile, pk=request.user)
-
     if request.method == 'POST':
         comment = Comment()
 
         comment.comment = request.POST['comment']
         comment.post = post
-        comment.profile = profile
+        comment.user = request.user
 
         comment.save()
 
@@ -99,7 +97,8 @@ def PostComment(request, pk):
 
 # like on posts
 def PostLike(request, id):
-    post = Post.objects.get(pk=id)
+    # post = Post.objects.get(pk=id)
+    post = get_object_or_404(Post, pk=id)
     liked = False
     for user in post.likes.all():
         if user == request.user:
@@ -113,6 +112,7 @@ def PostLike(request, id):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
+# upload post
 def UploadPost(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
@@ -121,16 +121,15 @@ def UploadPost(request):
         # check whether it's valid:
         if form.is_valid():
             newPost = form.save(commit=False)
-            cd = form.cleaned_data
-            newPost.img = cd['img']
-            newPost.caption = cd['caption']
+            newPost.img = form.cleaned_data['img']
+            newPost.caption = form.cleaned_data['caption']
             newPost.user = request.user
             newPost.save()
 
             return render(request, 'weeb/postDetailed.html', {'post': newPost})
 
 
-        print(form.errors)
+        # print(form.errors)
         return render(request, 'weeb/post_form.html', context={'form': form, 'form.error': form.errors})
 
     form = PostForm()

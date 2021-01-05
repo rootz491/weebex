@@ -32,7 +32,6 @@ from PIL import Image
 
 
 class PostForm(forms.ModelForm):
-
     class Meta:
         fields = ['img', 'caption']
         model = Post
