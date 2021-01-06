@@ -28,11 +28,10 @@
 
     <div class="container">
 
-
         <nav>
             <div id="logo">
                 {% load static %}
-                <a href="{% url 'weeb:index' %}"><img src="{% static 'weeb/img/logo.png' %}" alt="logo"></a>
+                <a {% if user.is_authenticated %} href="{% url 'weeb:index' %}" {% else %} href="" {% endif %}><img src="{% static 'weeb/img/logo.png' %}" alt="logo"></a>
             </div>
 
             <div class="navBtn">

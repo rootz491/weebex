@@ -69,7 +69,7 @@ class Comment(models.Model):
     createdAt = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['-createdAt']
+        ordering = ['createdAt']
 
     def __str__(self):
         return 'comment @' + str(self.user.username) + ' ' + str(self.id)
