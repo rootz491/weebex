@@ -72,4 +72,4 @@ class Comment(models.Model):
         ordering = ['-createdAt']
 
     def __str__(self):
-        return 'comment @' + str(self.profile.username) + ' ' + str(self.id)
+        return 'comment @' + str(self.user.username) + ' ' + str(self.id)

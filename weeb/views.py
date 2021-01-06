@@ -1,7 +1,9 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse_lazy
-# auth and permission check
+# auth and login
+from django.contrib.auth import login, authenticate
+# permission check
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required, permission_required
 # generic
@@ -117,7 +119,7 @@ def PostLike(request, id):
         post.likes.remove(request.user)
     else:
         post.likes.add(request.user)
-    post.save()
+    # post.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
@@ -158,26 +160,34 @@ def registerUser(request):
 
         # process form data
 
-    if request.method == 'GET':
+    if request.method == 'POST':
         form = RegisterForm(request.POST)
 
         if form.is_valid():
-            user = form.save(commit=False)
+            newUser = form.save(commit=False)
             print(form)
             # clean (normalize) the data.
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            # to change the password
-            user.set_password(password)  # we use this function coz the password will be hashed and not the plain text.
-            user.save()
+            # if user already exists
+            existingUser = User.objects.filter(username=username)
+            print(existingUser)
+            if existingUser:
+                return render(request, template_name, {'error': 'username already exists'})
+            # creating new user
+            newUser.set_password(password)      # password cannot be saved directly so this function will first hash it and then save it!
+            newUser.save()
+            print(newUser)
             # at this point, user data is stored into database.
 
             newProfile = Profile()
-            newProfile.user = user
+            newProfile.user = newUser
             newProfile.username = username
+            newProfile.fullName = username
+            newProfile.save()
+            # user can add twitter handle and bio by editing profile.
             # newProfile.twitterHandle
             # newProfile.bio
-            newProfile.save()
 
             # return User object if the credentials are correct.
             user = authenticate(username=username, password=password)
@@ -188,5 +198,7 @@ def registerUser(request):
                     return redirect('weeb:index')  # redirect user to index page.
                     # login successful!
 
+            return render(request, template_name, {'error': 'something\'s wrong with user, contact admin.'})
+
         # if form is not valid then,
-        return render(request, template_name)
+        return render(request, template_name, {'error': 'invalid form'})
