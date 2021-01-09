@@ -33,7 +33,11 @@
                         {{ post.caption }}
                     </p>
                     <div class="interactBtn">
+                        {% if user in post.likes.all %}
                         <div><a href="{% url 'weeb:postLike' post.pk %}"><img src="{% static 'weeb/img/like2.png' %}" alt="like button"></a><span>{{ post.likes.count }}</span></div>
+                        {% else %}
+                        <div><a href="{% url 'weeb:postLike' post.pk %}"><img src="{% static 'weeb/img/like1.png' %}" alt="like button"></a><span>{{ post.likes.count }}</span></div>
+                        {% endif %}
                         <div><a href="{% url 'weeb:postDetail' post.pk %}"><img src="{% static 'weeb/img/comment.png' %}" alt="comment button"></a><span>{{ post.post_comment.count }}</span></div>
                     </div>
                 </div>

@@ -43,13 +43,17 @@
 
                     <div class="interactBtn">
                         {% load static %}
+                        {% if user in post.likes.all %}
                         <div><a href="{% url 'weeb:postLike' post.pk %}"><img src="{% static 'weeb/img/like2.png' %}" alt="like button"></a><span>{{ post.likes.count }}</span></div>
+                        {% else %}
+                        <div><a href="{% url 'weeb:postLike' post.pk %}"><img src="{% static 'weeb/img/like1.png' %}" alt="like button"></a><span>{{ post.likes.count }}</span></div>
+                        {% endif %}
                         <div><a href="#inputComment"><img src="{% static 'weeb/img/comment.png' %}" alt="comment button"></a><span>{{ post.post_comment.count }}</span></div>
                     </div>
                 </div>
 
                 <div class="commentSection">
-                    
+
                     <h1>comments</h1>
 
                     <div class="commentWrapper">
@@ -60,8 +64,8 @@
                         </div>
                         {% else %}
 
-                            {% for comment in post.post_comment.all %}
                             <!--    comments     -->
+                            {% for comment in post.post_comment.all %}
                             <div class="comment">
                                 <h4 class="user"><a href="{% url 'weeb:profile' comment.user %}"><span>{{ comment.user.username }}</span></a></h4>
                                 <p class="content">    {{ comment.comment }}     </p>
