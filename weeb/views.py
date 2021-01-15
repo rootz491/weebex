@@ -104,7 +104,7 @@ def PostComment(request, pk):
         comment.save()
         messages.add_message(request, messages.SUCCESS, 'comment added successfully')
         # return render(request, 'weeb/postDetailed.html', {'post': post})
-        return reverse('weeb:postDetail', kwargs={'pk': pk})
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 # like on posts
@@ -119,10 +119,10 @@ def PostLike(request, id):
             break
     if liked:
         post.likes.remove(request.user)
-        messages.add_message(request, messages.SUCCESS, 'Liked')
+        messages.add_message(request, messages.ERROR, 'Disliked')
     else:
         post.likes.add(request.user)
-        messages.add_message(request, messages.SUCCESS, 'Unliked')
+        messages.add_message(request, messages.SUCCESS, 'Liked')
     # post.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
