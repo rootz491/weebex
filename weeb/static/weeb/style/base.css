@@ -8,6 +8,17 @@
     --whiteTxt:#F2FFFF;
     --lPuple:	#757AA1;
     --gold:	#FFA600;
+        /* messages */
+    --DEBUGbg: #D4EDDA;
+    --DEBUGtxt: #52565A;
+    --INFObg: #D1ECF1;
+    --INFOtxt: #2C649F;
+    --SUCCESSbg: #A4F6A7;
+    --SUCCESStxt: #368741;
+    --WARNINGbg: #FFF3CD;
+    --WARNINGtxt: #856404;
+    --ERRORbg: #F8D7DA;
+    --ERRORtxt: #721C24;
     /* screen size */
     --postWidth: 500px;
     --postHeight: 400px;
@@ -21,6 +32,7 @@
     font-family: 'Poppins', sans-serif;
     text-decoration: none;
     scroll-behavior: smooth;
+    list-style: none
 }
 
 body {

@@ -1,0 +1,75 @@
+/* flash_messages */
+
+
+.flash {
+    position: absolute;
+    top: 1em;
+    right: 20px;
+    width: 250px;
+    z-index: 25;
+}
+
+
+
+.fm {
+    border-radius: 13px;
+    padding: 2px 14px;
+    margin: 1em 0;
+    border-top-right-radius: 0px;
+    position: relative;
+    transition: all .3s ease;    
+}
+
+.deleteMsg {
+    width: 25px;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    z-index: 30;
+}
+
+.deleteMsg > img {
+    max-width: 100%;
+}
+
+.DEBUG {
+    background: var(--DEBUGbg);
+    color: var(--DEBUGtxt);
+    border: var(--DEBUGtxt);
+}
+
+.INFO {
+    background: var(--INFObg);
+    color: var(--INFOtxt);
+    border: var(--INFOtxt);
+}
+
+.SUCCESS {
+    background: var(--SUCCESSbg);
+    color: var(--SUCCESStxt);
+    border: var(--SUCCESStxt);
+}
+
+.WARNING {
+    background: var(--WARNINGbg);
+    color: var(--WARNINGtxt);
+    border: var(--WARNINGtxt);
+}
+
+.ERROR {
+    background: var(--ERRORbg);
+    color: var(--ERRORtxt);
+    border: var(--ERRORtxt);
+}
+
+@media screen and (max-width: 500px) {
+    .flash {
+        margin: auto;
+        max-width: 80%;
+        left: 0;
+        right: 0;
+    }
+    .fm {
+        text-align: center;
+    }
+}

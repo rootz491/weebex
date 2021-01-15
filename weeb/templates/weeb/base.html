@@ -12,12 +12,14 @@
     <!-- essential files -->
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'weeb/style/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'weeb/style/flash_messages.css' %}">
+    <script defer src="{% static 'weeb/js/flash_messages.js' %}"></script>
 
     <!-- specific files -->
     {% block specific %}
         {% load static %}
     {% endblock %}
-    
+
     <title> {% block title %} Weeb-Ex {% endblock %} </title>
 </head>
 <body>
@@ -63,6 +65,20 @@
 
         </div>
     </div>
+
+    {% if messages %}
+    <!-- flash messages -->
+    <ul class="flash">
+        {% for message in messages %}
+        <li class="fm {% if message.tags %} {{ message.tags }} {% endif %}">
+                {{ message }}
+                {% load static %}
+            <a class="deleteMsg"><img src="{% static 'weeb/img/delete.png' %}" alt="delete messages"></a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
 
 </body>
 </html>

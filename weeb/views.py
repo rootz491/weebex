@@ -11,6 +11,8 @@ from django.views.generic import View
 from django.views import generic
 from .models import *
 from .forms import PostForm, RegisterForm
+# flash messages
+from django.contrib import messages
 
 # Create your views here.
 
@@ -100,9 +102,9 @@ def PostComment(request, pk):
         comment.user = request.user
 
         comment.save()
-
-        return render(request, 'weeb/postDetailed.html', {'post': post})
-
+        messages.add_message(request, messages.SUCCESS, 'comment added successfully')
+        # return render(request, 'weeb/postDetailed.html', {'post': post})
+        return reverse('weeb:postDetail', kwargs={'pk': pk})
 
 
 # like on posts
@@ -117,8 +119,10 @@ def PostLike(request, id):
             break
     if liked:
         post.likes.remove(request.user)
+        messages.add_message(request, messages.SUCCESS, 'Liked')
     else:
         post.likes.add(request.user)
+        messages.add_message(request, messages.SUCCESS, 'Unliked')
     # post.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
