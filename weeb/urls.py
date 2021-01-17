@@ -32,7 +32,7 @@ urlpatterns = [
     # path(r'post/upload', views.PostView.as_view(), name='uploadPost'),
 
     # register
-    path(r'account/register', views.registerUser, name='register'),
+    path(r'accounts/register', views.registerUser, name='register'),
 
     # error handling
     path(r'favicon.ico', RedirectView.as_view(url='weeb/static/img/favicon.ico')),

@@ -13,7 +13,8 @@ from .models import *
 from .forms import PostForm, RegisterForm
 # flash messages
 from django.contrib import messages
-
+# regex to password check
+import re
 # Create your views here.
 
 
@@ -169,15 +170,31 @@ def registerUser(request):
 
         if form.is_valid():
             newUser = form.save(commit=False)
-            print(form)
             # clean (normalize) the data.
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            # if user already exists
-            existingUser = User.objects.filter(username=username)
-            print(existingUser)
+            email = form.cleaned_data['email']
+
+            # EMAIL check
+            existingUser = User.objects.filter(email=email)
             if existingUser:
-                return render(request, template_name, {'error': 'username already exists'})
+                messages.add_message(request, messages.ERROR, 'email already registered')
+                print('username already exists')
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+            # PASSWORD check
+            reg = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{8,32}$"
+                # compiling regex
+            pat = re.compile(reg)
+                # searching regex
+            mat = re.search(pat, password)
+            if mat:
+                pass
+            else:
+                print(password)
+                messages.add_message(request, messages.ERROR, 'Weak password!')
+                messages.add_message(request, messages.INFO, 'password should be 8-32 characters long, with one aphabet (upper & lower-case) with atleast 1 special character.')
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
             # creating new user
             newUser.set_password(password)      # password cannot be saved directly so this function will first hash it and then save it!
             newUser.save()
@@ -190,19 +207,12 @@ def registerUser(request):
             newProfile.fullName = username
             newProfile.save()
             # user can add twitter handle and bio by editing profile.
-            # newProfile.twitterHandle
-            # newProfile.bio
 
-            # return User object if the credentials are correct.
-            user = authenticate(username=username, password=password)
+            messages.add_message(request, messages.SUCCESS, 'Registered successfully')
+            messages.add_message(request, messages.INFO, 'Please login to enjoy site')
+            return redirect('login')
 
-            if user is not None:
-                if user.is_active:
-                    login(request, user)  # means user logged in
-                    return redirect('weeb:index')  # redirect user to index page.
-                    # login successful!
-
-            return render(request, template_name, {'error': 'something\'s wrong with user, contact admin.'})
 
         # if form is not valid then,
-        return render(request, template_name, {'error': 'invalid form'})
+        messages.add_message(request, messages.WARNING, 'something\'s wrong with user, contact admin')
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
