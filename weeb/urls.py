@@ -25,7 +25,7 @@ urlpatterns = [
 
     # profile
     path(r'<str:username>', views.profile, name='profile'),
-    # path(r'<str:pk>/', views.ProfileView.as_view(), name='profile'),
+    path(r'<str:username>/edit', views.ProfileEdit, name='profileEdit'),
 
     # post upload
     path(r'post/upload', views.UploadPost, name='uploadPost'),

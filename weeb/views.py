@@ -82,6 +82,12 @@ class PostView(LoginRequiredMixin, generic.CreateView):
     fields = ['img', 'caption']
 
 
+@login_required
+def ProfileEdit(request, username):
+    template_name = 'weeb/profile_form.html'
+
+
+
 
 @login_required
 # @permission_required('weeb.moderator', raise_exception=True)

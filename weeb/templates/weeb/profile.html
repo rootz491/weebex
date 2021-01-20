@@ -6,6 +6,7 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'weeb/style/profile.css' %}">
     <link rel="stylesheet" href="{% static 'weeb/style/newPost.css' %}">
+    <script defer src="{% static 'weeb/js/deleteProfile.js' %}"></script>
 {% endblock %}
 
 
@@ -14,7 +15,27 @@
 {% endblock %}
 
 
+{% block nonContent %}
+    <!-- dialog box for delete profile -->
 
+    <div class="deleteProfile" hidden>
+            <a id="closeBtn">
+                <img src="https://img.icons8.com/flat_round/50/000000/delete-sign.png"/>
+            </a>
+
+            <h1>Are you sure?</h1>
+            <h2>Once you <span>confirmed</span> then there's no going back!</h2>
+            <form id="deleteProfileForm" action="#delete_profile" method="post">
+                <div class="password_wrapper">
+                    <label for="password"></label>
+                    <input type="password" name="password" required placeholder="enter your password">
+                </div>
+                <div class="submit_wrapper">
+                    <input type="submit" value="delete account">
+                </div>
+            </form>
+    </div>
+{% endblock %}
 
 
 {% block content %}
@@ -24,19 +45,18 @@
                 <div class="profileCard">
                     <h1>{{ profile.username }}</h1>
                     {% if profile.user == user %}
-                    <p><small>{{ user.email }}</small></p>
+                       <p><small>{{ user.email }}</small></p>
                     {% endif %}
                     <p>{{ profile.fullName }}</p>
                     <p style="color: var(--greyTxt);">{{ profile.bio }}</p>
-                    <h2>twitter: <a style="color: var(--Lblue);" target="_blank" href="https://www.twitter.com/{{ profile.twitterHandle }}/">{{ profile.twitterHandle }}</a></h2>
                     <p>Posts: <span>{{ profile.user.post_set.count }}</span></p>
                     <p>Joined on: <span>{{ profile.joinedOn.date }}</span></p>
-                    {% if profile.user == user %}
-                    <form action="#deleteUser" method="POST">
-                         {% csrf_token %}
-                        <input id="deleteBtn" type="submit" value="delete user">
-                    </form>
-                    {% endif %}
+                    <!-- links & actions -->
+                    <div class="userBtn">
+                        <a target="_blank" href="https://www.twitter.com/{{ profile.twitterHandle }}/"><img src="https://img.icons8.com/dotty/80/000000/twitter.png"/></a>
+                        <a href="{% url 'weeb:profileEdit' profile.username %}"><img src="https://img.icons8.com/fluent-systems-regular/48/000000/edit-user.png"/></a>
+                        <a id="deleteProfile" href="#delete profile"><img src="https://img.icons8.com/pastel-glyph/64/000000/remove-user-male.png"/></a>
+                    </div>
                 </div>
 
             </div>

@@ -212,3 +212,113 @@ body {
         position: relative;
     }
 }
+
+
+
+
+/* user buttons */
+
+.userBtn {
+    width: 100%;
+    margin: auto;
+    padding-top: 10px;
+    /* background: var(--lPuple); */
+
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.userBtn > a {
+    height: 40px;
+    width: 40px;
+    padding: 3px;
+    border-radius: 100%;
+    background-color: var(--lPuple);
+}
+
+.userBtn a:first-child:hover {
+    background: var(--Lblue);
+}
+
+.userBtn a:nth-child(2):hover {
+    background: rgb(145, 226, 145);
+}
+
+.userBtn a:last-child:hover {
+    background: var(--Red);
+}
+
+.userBtn img {
+    width: 100%;
+}
+
+/* delete profile dialog box */
+
+.deleteProfile {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    width: 300px;
+    background: var(--lPuple);
+    border: 2px solid var(--greyTxt);
+    padding: 1em;
+    border-radius: 3px;
+}
+
+.deleteProfile > h1 {
+    font-size: 24px;
+    color: #E04F5F;
+    text-align: center;
+}
+
+.deleteProfile > h2 {
+    font-size: 18px;
+    text-align: center;
+}
+
+.deleteProfile form {
+    margin-top: 2em;
+    width: 100%;
+}
+
+.deleteProfile .password_wrapper input {
+    padding: 6px 13px;
+    font-size: 18px;
+    color: black;
+    width: 100%;
+}
+
+.deleteProfile .submit_wrapper {
+    width: 100%;
+    display: flex;
+}
+
+.deleteProfile .submit_wrapper input {
+    margin: auto;
+    margin-top: 1em;
+    width: 150px;
+    padding: 6px 10px;
+    font-size: 16px;
+    background-color: var(--Red);
+    cursor: pointer;
+}
+
+.deleteProfile .submit_wrapper input:hover {
+    background: var(--whiteTxt);
+    color: var(--Red);
+    font-weight: 500;
+}
+
+#closeBtn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 30px;
+    cursor: pointer;
+}
+
+#closeBtn img {
+    width: 100%;
+}
