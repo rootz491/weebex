@@ -40,3 +40,9 @@ class RegisterForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password']
+
+
+class userDeleteForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['password']
