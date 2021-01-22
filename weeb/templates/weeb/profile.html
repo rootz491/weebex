@@ -25,7 +25,8 @@
 
             <h1>Are you sure?</h1>
             <h2>Once you <span>confirmed</span> then there's no going back!</h2>
-            <form id="deleteProfileForm" action="#delete_profile" method="post">
+            <form id="deleteProfileForm" action="{% url 'weeb:userDelete' user.username %}" method="post">
+                {% csrf_token %}
                 <div class="password_wrapper">
                     <label for="password"></label>
                     <input type="password" name="password" required placeholder="enter your password">
@@ -79,7 +80,7 @@
                         {% else %}
                         <div><a href="{% url 'weeb:postLike' post.pk %}"><img src="{% static 'weeb/img/like1.png' %}" alt="like button"></a><span>{{ post.likes.count }}</span></div>
                         {% endif %}
-                        <div><a href="#postDetailed/comment"><img src="{% static 'weeb/img/comment.png' %}" alt="comment button"></a><span>{{ post.post_comment.count }}</span></div>
+                        <div><a href=""><img src="{% static 'weeb/img/comment.png' %}" alt="comment button"></a><span>{{ post.post_comment.count }}</span></div>
                     </div>
                 </div>
                 {% endfor %}
