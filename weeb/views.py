@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.views.generic import View
 from django.views import generic
 from .models import *
-from .forms import PostForm, RegisterForm
+from .forms import PostForm, RegisterForm, userDeleteForm
 # flash messages
 from django.contrib import messages
 # regex to password check
@@ -95,6 +95,22 @@ def profile(request, username):
     u = get_object_or_404(User, username=username)
     p = get_object_or_404(Profile, pk=u)
     return render(request, 'weeb/profile.html', {'profile': p})
+
+
+def userDelete(request, username):
+
+    if request.method == 'POST':
+        user = get_object_or_404(User, username=username)
+        form = userDeleteForm(request.POST or None, request.FILES or None)
+
+        # check whether it's valid:
+        if form.is_valid():
+            thatUSer = form.save(commit=False)
+            passwd = thatUSer.get_password()
+            print(passwd)
+
+
+
 
 
 # comment on posts

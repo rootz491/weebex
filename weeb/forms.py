@@ -41,7 +41,15 @@ class RegisterForm(forms.ModelForm):
         model = User
         fields = ['username', 'email', 'password']
 
+
 class ProfileForm(forms.ModelForm):
     class Meta:
         fields = ['fullName', 'bio', 'twitterHandle']
         model = Profile
+
+
+class userDeleteForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['password']
+

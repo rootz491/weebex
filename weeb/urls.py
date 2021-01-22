@@ -34,6 +34,8 @@ urlpatterns = [
     # register
     path(r'accounts/register', views.registerUser, name='register'),
 
+    path(r'<str:username>/account/delete', views.userDelete, name='userDelete'),
+
     # error handling
     path(r'favicon.ico', RedirectView.as_view(url='weeb/static/img/favicon.ico')),
 ]
