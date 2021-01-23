@@ -157,7 +157,7 @@ def CommentDeleteView(request, postPk, commentPk):
                 return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
             comment.delete()
-            messages.add_message(request, messages.SUCCESS, 'comment deleted successfully')
+            messages.add_message(request, messages.INFO, 'comment deleted successfully')
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
         except Post.DoesNotExist:
