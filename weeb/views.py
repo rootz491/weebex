@@ -56,6 +56,10 @@ class IndexView(LoginRequiredMixin, generic.ListView):
     template_name = 'weeb/home.html'
     context_object_name = 'postObj'
 
+    def get_queryset(self):
+        """Return the last five posts."""
+        return Post.objects.order_by('-createdAt')[:5]
+
 
 class PostDetailedView(LoginRequiredMixin, generic.DetailView):
     model = Post
@@ -138,6 +142,31 @@ def userDelete(request, username):
 
 
 
+def CommentDeleteView(request, postPk, commentPk):
+    if request.method == 'POST':
+        try:
+            post = Post.objects.get(pk=postPk)
+            comment = Comment.objects.get(pk=commentPk)
+
+            if not comment.user == request.user:
+                messages.add_message(request, messages.WARNING, 'you don\'t own this comment!')
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+            if not comment.post == post:
+                messages.add_message(request, messages.WARNING, 'comment doesn\'t belong to this post')
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+            comment.delete()
+            messages.add_message(request, messages.SUCCESS, 'comment deleted successfully')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+        except Post.DoesNotExist:
+            messages.add_message(request, messages.ERROR, 'post doesn\'t exists')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+        except Comment.DoesNotExist:
+            messages.add_message(request, messages.ERROR, 'comment doesn\'t exists')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 
