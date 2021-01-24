@@ -68,7 +68,7 @@
                             {% for comment in post.post_comment.all %}
                             <div class="comment">
                                 <div class="commentHeader">
-                                    <h4 class="user"><a href="{% url 'weeb:profile' comment.user %}"><span>{{ comment.user.username }}</span></a></h4>
+                                    <h4 class="user"><a href="{% url 'weeb:profile' comment.user %}"><span>{{ comment.user.username|truncatechars:9 }}</span></a></h4>
                                     <div>
                                          {% if comment.user == user %}
                                         <form action="{% url 'weeb:commentDelete' postPk=post.pk commentPk=comment.pk %}" method="POST">

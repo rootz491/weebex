@@ -13,6 +13,8 @@ from .models import *
 from .forms import PostForm, RegisterForm, userDeleteForm
 # flash messages
 from django.contrib import messages
+# to paginate index view
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # regex to password check
 import re
 # Create your views here.
@@ -50,15 +52,27 @@ def index(request):
 
 #   class based views
 
+# class IndexView(LoginRequiredMixin, generic.ListView):
+#     login_url = 'login'
+#     model = Post
+#     template_name = 'weeb/home.html'
+#     context_object_name = 'postObj'
+#
+#     def get_queryset(self):
+#         """Return the last five posts."""
+#         return Post.objects.order_by('-createdAt')[:5]
+
+
+
+#   using paginator!
+
 class IndexView(LoginRequiredMixin, generic.ListView):
     login_url = 'login'
     model = Post
     template_name = 'weeb/home.html'
     context_object_name = 'postObj'
+    paginate_by = 2
 
-    def get_queryset(self):
-        """Return the last five posts."""
-        return Post.objects.order_by('-createdAt')[:5]
 
 
 class PostDetailedView(LoginRequiredMixin, generic.DetailView):

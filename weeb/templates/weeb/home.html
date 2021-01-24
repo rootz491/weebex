@@ -8,7 +8,9 @@
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static 'weeb/style/main.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'weeb/style/newPost.css' %}">
-
+        <script src="{% static 'weeb/js/jquery-3.5.1.js' %}"></script>
+        <script src="{% static '/weeb/js/jquery.waypoints.min.js' %}"></script>
+        <script src="{% static '/weeb/js/infinite.min.js' %}"></script>
     {% endblock %}
 
 
@@ -30,7 +32,7 @@
                     {% load static %}
                     <a href="{% url 'weeb:postDetail' post.pk %}"><div class="img"><img src="{{ post.img.url }}" alt="user pic"></div></a>
                     <p class="caption">
-                        {{ post.caption }}
+                        {{ post.caption|truncatechars:30 }}
                     </p>
                     <div class="interactBtn">
                         {% if user in post.likes.all %}
@@ -43,8 +45,46 @@
                 </div>
 
             {% endfor %}
+                {% if postObj.has_next %}
+                    <h1 id="loading"><span>loading ...</span></h1>
+                {% endif %}
             {% endif %}
             </div>
+
+
+            <!-- to load posts using AJAX -->
+
+
+            <script>
+                var infinite = new Waypoint.Infinite({
+                    element: $('#postWall')[0],
+                    handler: function(direction) {
+                        console.log(direction);
+                        console.log('loading posts');
+                    },
+                    offset: 'bottom-in-view',
+                    onBeforePageLoad: function () {
+                        $('#loading').show();
+                    },
+                    onAfterPageLoad: function () {
+                        $('#loading').hide();
+                    }
+                });
+
+<!--              var infinite = new Waypoint.Infinite({-->
+<!--              element: $("#postWall")[0],-->
+<!--              onBeforePageLoad: function () {-->
+<!--                $('.loading').show();-->
+<!--              },-->
+<!--              onAfterPageLoad: function ($items) {-->
+<!--                $('.loading').hide();-->
+<!--              }-->
+<!--            });-->
+            </script>
+
+
+
+
 
             <div class="devWrapper">
                 <div id="DEV">
