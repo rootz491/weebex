@@ -24,66 +24,51 @@
     {% block content %}
             
             <div id="postWall">
-            {% if user %}
-            {% for post in postObj %}
-                <!--    post    -->
-                <div class="post">
-                    <a href="{% url 'weeb:profile' post.user %}"><h3 class="user">{{ post.user.username }}</h3></a>
-                    {% load static %}
-                    <a href="{% url 'weeb:postDetail' post.pk %}"><div class="img"><img src="{{ post.img.url }}" alt="user pic"></div></a>
-                    <p class="caption">
-                        {{ post.caption|truncatechars:30 }}
-                    </p>
-                    <div class="interactBtn">
-                        {% if user in post.likes.all %}
-                        <div><a href="{% url 'weeb:postLike' post.pk %}"><img src="{% static 'weeb/img/like2.png' %}" alt="like button"></a><span>{{ post.likes.count }}</span></div>
-                        {% else %}
-                        <div><a href="{% url 'weeb:postLike' post.pk %}"><img src="{% static 'weeb/img/like1.png' %}" alt="like button"></a><span>{{ post.likes.count }}</span></div>
-                        {% endif %}
-                        <div><a href="{% url 'weeb:postDetail' post.pk %}"><img src="{% static 'weeb/img/comment.png' %}" alt="comment button"></a><span>{{ post.post_comment.count }}</span></div>
+                <div class="infinite-container">
+                {% for post in postObj %}
+                    <!--    post    -->
+                    <div class="post">
+                        <a href="{% url 'weeb:profile' post.user %}"><h3 class="user">{{ post.user.username }}</h3></a>
+                        {% load static %}
+                        <a href="{% url 'weeb:postDetail' post.pk %}"><div class="img"><img src="{{ post.img.url }}" alt="user pic"></div></a>
+                        <p class="caption">
+                            {{ post.caption|truncatechars:30 }}
+                        </p>
+                        <div class="interactBtn">
+                            {% if user in post.likes.all %}
+                            <div><a href="{% url 'weeb:postLike' post.pk %}"><img src="{% static 'weeb/img/like2.png' %}" alt="like button"></a><span>{{ post.likes.count }}</span></div>
+                            {% else %}
+                            <div><a href="{% url 'weeb:postLike' post.pk %}"><img src="{% static 'weeb/img/like1.png' %}" alt="like button"></a><span>{{ post.likes.count }}</span></div>
+                            {% endif %}
+                            <div><a href="{% url 'weeb:postDetail' post.pk %}"><img src="{% static 'weeb/img/comment.png' %}" alt="comment button"></a><span>{{ post.post_comment.count }}</span></div>
+                        </div>
                     </div>
+                {% endfor %}
                 </div>
 
-            {% endfor %}
-                {% if postObj.has_next %}
-                    <h1 id="loading"><span>loading ...</span></h1>
+                {% if page_obj.has_next %}
+                    <a class="infinite-more-link" style="display: grid; place-content: center;" href="?page={{ page_obj.next_page_number }}">next</a>
                 {% endif %}
-            {% endif %}
+                {% if page_obj.has_previous %}
+                    <a style="display: grid; place-content: center;" href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
             </div>
 
+                    <!-- to load posts using AJAX -->
 
-            <!-- to load posts using AJAX -->
-
-
-            <script>
-                var infinite = new Waypoint.Infinite({
-                    element: $('#postWall')[0],
-                    handler: function(direction) {
-                        console.log(direction);
-                        console.log('loading posts');
-                    },
-                    offset: 'bottom-in-view',
-                    onBeforePageLoad: function () {
-                        $('#loading').show();
-                    },
-                    onAfterPageLoad: function () {
-                        $('#loading').hide();
-                    }
-                });
-
-<!--              var infinite = new Waypoint.Infinite({-->
-<!--              element: $("#postWall")[0],-->
-<!--              onBeforePageLoad: function () {-->
-<!--                $('.loading').show();-->
-<!--              },-->
-<!--              onAfterPageLoad: function ($items) {-->
-<!--                $('.loading').hide();-->
-<!--              }-->
-<!--            });-->
-            </script>
-
-
-
+                    <script>
+                        var infinite = new Waypoint.Infinite({
+                            element: $('.infinite-container')[0],
+                            onBeforePageLoad: function () {
+                                console.log('loading...');
+                                $('.loading').show();
+                            },
+                            onAfterPageLoad: function ($items) {
+                                $('.loading').hide();
+                                console.log('done loading!');
+                            }
+                        });
+                    </script>
 
 
             <div class="devWrapper">
