@@ -42,7 +42,21 @@ class RegisterForm(forms.ModelForm):
         fields = ['username', 'email', 'password']
 
 
+<<<<<<< HEAD
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        fields = ['fullName', 'bio', 'twitterHandle']
+        model = Profile
+
+
 class userDeleteForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['password']
+
+=======
+class userDeleteForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['password']
+>>>>>>> master

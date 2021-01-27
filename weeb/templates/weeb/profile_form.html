@@ -1,0 +1,75 @@
+{% extends 'weeb/base.html' %}
+
+
+{% block title %}
+    edit profile
+{% endblock %}
+
+
+{% block nonContent %}
+    <style>
+        .content {
+            display: grid;
+            place-content: center;
+            height: 60vh;
+        }
+        form div {
+            display: flex;
+            justify-content: space-between;
+            padding: .5em;
+        }
+        form input, form textarea {
+            padding-left: 5px;
+            color: black;
+        }
+        input:selected, textarea:selected {
+            background: light-blue
+        }
+        #submit {
+            justify-content: center;
+        }
+        #submit > input {
+            font-size: 1.3rem;
+            color: pink;
+            cursor: pointer;
+            background: none;
+        }
+
+        @media screen and (min-width: 355px) {
+            form {
+                min-width: 350px;
+            }
+        }
+
+        @media screen and (max-width: 360px) {
+            form {
+                display: block;
+                width: 300px;
+            }
+            form input {
+                width: 175px;
+            }
+            textarea {
+                width: 175px;
+            }
+        }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form %}
+            <div>
+                <span>{{ field.label }}</span>
+                {{ field }}
+            </div>
+        {% endfor %}
+        <div id="submit">
+            <input type="submit" value="update">
+        </div>
+    </form>
+
+{% endblock %}

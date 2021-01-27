@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-<<<<<<< HEAD
     <list default="true" id="3c6a80ed-6af2-44f7-a142-9905867503d5" name="Default Changelist" comment="" />
-=======
-    <list default="true" id="3c6a80ed-6af2-44f7-a142-9905867503d5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weeb/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/weeb/views.py" afterDir="false" />
-    </list>
->>>>>>> development
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,10 +39,10 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/weeb/static/weeb/js" />
+      <recent name="$PROJECT_DIR$/weeb/templates/weeb" />
       <recent name="$PROJECT_DIR$/weeb/static/weeb/style" />
       <recent name="$PROJECT_DIR$/templates/registration" />
       <recent name="$PROJECT_DIR$/weeb/static/weeb/img" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager">
@@ -94,7 +86,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

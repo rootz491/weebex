@@ -23,6 +23,9 @@ class Profile(models.Model):
     def __str__(self):
         return self.username
 
+    def get_absolute_url(self):
+        return reverse('weeb:profile', kwargs={'username': self.username})
+
 
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

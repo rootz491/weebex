@@ -157,3 +157,29 @@
     }
 }
 
+
+/* comment header */
+
+
+.commentHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
+.commentHeader div {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.commentHeader button {
+    width: 20px;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.commentHeader img {
+    width: 100%;
+    margin: auto;
+}

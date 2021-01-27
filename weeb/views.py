@@ -13,6 +13,8 @@ from .models import *
 from .forms import PostForm, RegisterForm, userDeleteForm
 # flash messages
 from django.contrib import messages
+# to paginate index view
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # regex to password check
 import re
 # Create your views here.
@@ -50,11 +52,13 @@ def index(request):
 
 #   class based views
 
-class IndexView(LoginRequiredMixin, generic.ListView):
+class IndexView(LoginRequiredMixin, generic.ListView):      # using paginator!
     login_url = 'login'
     model = Post
     template_name = 'weeb/home.html'
     context_object_name = 'postObj'
+    paginate_by = 3
+
 
 
 class PostDetailedView(LoginRequiredMixin, generic.DetailView):
@@ -69,10 +73,11 @@ class PostDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy('weeb:index')
 
 
-# class ProfileView(generic.DetailView):
-#     model = Profile
-#     template_name = 'weeb/profile.html'
-#     context_object_name = 'profile'
+class ProfileEditView(LoginRequiredMixin, generic.UpdateView):
+    login_url = 'login'
+    model = Profile
+    template_name = 'weeb/profile_form.html'
+    fields = ['fullName', 'bio', 'twitterHandle']
 
 
 class PostView(LoginRequiredMixin, generic.CreateView):
@@ -80,6 +85,12 @@ class PostView(LoginRequiredMixin, generic.CreateView):
     template_name = 'weeb/post_form.html'
     model = Post
     fields = ['img', 'caption']
+
+
+# @login_required
+# def ProfileEdit(request, username):
+#     template_name = 'weeb/profile_form.html'
+
 
 
 
@@ -94,6 +105,71 @@ def profile(request, username):
 def userDelete(request, username):
 
     if request.method == 'POST':
+<<<<<<< HEAD
+        try:
+            form = userDeleteForm(request.POST)
+            user = User.objects.get(username=username)
+            if request.user == user:
+                pass
+            else:
+                print('forbidden')
+                messages.add_message(request, messages.ERROR, 'forbidden')
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+            # check whether it's valid:
+            if form.is_valid():
+                thatUSer = form.save(commit=False)
+                password = thatUSer.password
+                print(password)
+                if user.check_password(password):
+                    print('deleted!')
+                    # user.delete()
+                    messages.success(request, "The user is deleted")
+                    return reverse('login')
+                else:
+                    messages.add_message(request, messages.ERROR, 'Wrong password. please try again!')
+                    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+        except User.DoesNotExist:
+            messages.add_message(request, messages.ERROR, 'User doesn\'t exist')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+        except Exception as e:
+            messages.add_message(request, messages.ERROR, e)
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+    # make a post request
+    return render(request, 'front.html')
+
+
+
+def CommentDeleteView(request, postPk, commentPk):
+    if request.method == 'POST':
+        try:
+            post = Post.objects.get(pk=postPk)
+            comment = Comment.objects.get(pk=commentPk)
+
+            if not comment.user == request.user:
+                messages.add_message(request, messages.WARNING, 'you don\'t own this comment!')
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+            if not comment.post == post:
+                messages.add_message(request, messages.WARNING, 'comment doesn\'t belong to this post')
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+            comment.delete()
+            messages.add_message(request, messages.INFO, 'comment deleted successfully')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+        except Post.DoesNotExist:
+            messages.add_message(request, messages.ERROR, 'post doesn\'t exists')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+        except Comment.DoesNotExist:
+            messages.add_message(request, messages.ERROR, 'comment doesn\'t exists')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+=======
         user = get_object_or_404(User, username=username)
         form = userDeleteForm(request.POST or None, request.FILES or None)
 
@@ -104,6 +180,7 @@ def userDelete(request, username):
             print(passwd)
 
 
+>>>>>>> master
 
 
 
