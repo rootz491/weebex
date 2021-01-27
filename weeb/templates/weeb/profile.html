@@ -28,7 +28,6 @@
             <form id="deleteProfileForm" action="{% url 'weeb:userDelete' user.username %}" method="post">
                 {% csrf_token %}
                 <div class="password_wrapper">
-                    <label for="password"></label>
                     <input type="password" name="password" required placeholder="enter your password">
                 </div>
                 <div class="submit_wrapper">
@@ -56,7 +55,7 @@
                     <div class="userBtn">
                         <a target="_blank" href="https://www.twitter.com/{{ profile.twitterHandle }}/"><img src="https://img.icons8.com/dotty/80/000000/twitter.png"/></a>
                         {% if profile.user == user %}
-                        <a href="{% url 'weeb:profileEdit' profile.username %}"><img src="https://img.icons8.com/fluent-systems-regular/48/000000/edit-user.png"/></a>
+                        <a href="{% url 'weeb:profileEdit' profile.pk %}"><img src="https://img.icons8.com/fluent-systems-regular/48/000000/edit-user.png"/></a>
                         <a id="deleteProfile" href=""><img src="https://img.icons8.com/pastel-glyph/64/000000/remove-user-male.png"/></a>
                         {% endif %}
                     </div>

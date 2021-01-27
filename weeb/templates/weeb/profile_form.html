@@ -18,9 +18,12 @@
             justify-content: space-between;
             padding: .5em;
         }
-        form input {
+        form input, form textarea {
             padding-left: 5px;
             color: black;
+        }
+        input:selected, textarea:selected {
+            background: light-blue
         }
         #submit {
             justify-content: center;
@@ -39,8 +42,15 @@
         }
 
         @media screen and (max-width: 360px) {
-            form > div {
+            form {
                 display: block;
+                width: 300px;
+            }
+            form input {
+                width: 175px;
+            }
+            textarea {
+                width: 175px;
             }
         }
     </style>
@@ -58,7 +68,7 @@
             </div>
         {% endfor %}
         <div id="submit">
-            <input type="submit" value="post">
+            <input type="submit" value="update">
         </div>
     </form>
 

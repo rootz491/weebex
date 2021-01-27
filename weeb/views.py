@@ -77,7 +77,6 @@ class ProfileEditView(LoginRequiredMixin, generic.UpdateView):
     login_url = 'login'
     model = Profile
     template_name = 'weeb/profile_form.html'
-    context_object_name = 'profile'
     fields = ['fullName', 'bio', 'twitterHandle']
 
 
