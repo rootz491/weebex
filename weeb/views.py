@@ -52,7 +52,7 @@ def index(request):
 
 #   class based views
 
-class IndexView(LoginRequiredMixin, generic.ListView):      #   using paginator!
+class IndexView(LoginRequiredMixin, generic.ListView):      # using paginator!
     login_url = 'login'
     model = Post
     template_name = 'weeb/home.html'
@@ -73,10 +73,12 @@ class PostDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy('weeb:index')
 
 
-# class ProfileView(generic.DetailView):
-#     model = Profile
-#     template_name = 'weeb/profile.html'
-#     context_object_name = 'profile'
+class ProfileEditView(LoginRequiredMixin, generic.UpdateView):
+    login_url = 'login'
+    model = Profile
+    template_name = 'weeb/profile_form.html'
+    context_object_name = 'profile'
+    fields = ['fullName', 'bio', 'twitterHandle']
 
 
 class PostView(LoginRequiredMixin, generic.CreateView):
@@ -86,9 +88,9 @@ class PostView(LoginRequiredMixin, generic.CreateView):
     fields = ['img', 'caption']
 
 
-@login_required
-def ProfileEdit(request, username):
-    template_name = 'weeb/profile_form.html'
+# @login_required
+# def ProfileEdit(request, username):
+#     template_name = 'weeb/profile_form.html'
 
 
 
