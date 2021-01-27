@@ -105,7 +105,6 @@ def profile(request, username):
 def userDelete(request, username):
 
     if request.method == 'POST':
-<<<<<<< HEAD
         try:
             form = userDeleteForm(request.POST)
             user = User.objects.get(username=username)
@@ -169,18 +168,6 @@ def CommentDeleteView(request, postPk, commentPk):
         except Comment.DoesNotExist:
             messages.add_message(request, messages.ERROR, 'comment doesn\'t exists')
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-=======
-        user = get_object_or_404(User, username=username)
-        form = userDeleteForm(request.POST or None, request.FILES or None)
-
-        # check whether it's valid:
-        if form.is_valid():
-            thatUSer = form.save(commit=False)
-            passwd = thatUSer.get_password()
-            print(passwd)
-
-
->>>>>>> master
 
 
 
