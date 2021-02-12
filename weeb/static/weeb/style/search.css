@@ -1,0 +1,202 @@
+.searchSection {
+    width: 60%;
+    margin: auto;
+    min-height: 60vh;
+    /* background: grey; */
+}
+
+.searchBox {
+    padding: 2em;
+}
+
+input::selection {
+    background: lightblue;
+}
+
+form input {
+    border: 1px solid white;
+    width: 80%;
+    padding: 4px 10px;
+    background-color: var(--lPuple);
+    border-radius: 4px;
+}
+
+@media screen and (max-width: 370px) {
+    form input {
+        width: 75%;
+    }
+}
+
+form button {
+    width: 50px;
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+    color: var(--Lblue);
+}
+
+.searchResult {
+    margin: 3em 0;
+}
+
+section#users {
+    margin-bottom: 2em;
+}
+
+
+section > div:first-child {
+    padding: 4px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--lPuple);
+    margin-bottom: 1em;
+    border-radius: 10px;
+}
+
+section > ul {
+    overflow: hidden;
+    height: auto;
+    display: block;
+    transition: all .5s ease;
+}
+
+section#users > ul > a {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--lPuple);
+    padding-top: 4px;
+    padding-left: 4px;
+    margin-bottom: 8px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+section > ul > a:hover {
+    background: var(--lPuple);
+}
+
+.avatar {
+    width: 30px;
+    margin-right: 10px;
+}
+
+.avatar > img {
+    width: 100%;
+}
+
+section#users > ul > a > p {
+    margin: 0 10px;
+}
+
+.user::before {
+    content: '@';
+}
+
+
+
+/* post section */
+
+section#posts > ul > a {
+    margin: 20px 0;
+    min-height: 150px;
+    width: 100%;
+    display: flex;
+    margin-bottom: 2em;
+}
+.post {
+    margin: auto;
+    margin-bottom: 3em;
+    width: var(--postWidth);
+}
+
+
+.post > p {
+    letter-spacing: 1.7px;
+    margin: 15px 0;
+    color: var(--greyTxt);
+}
+
+.user::before {
+    content: '@';
+}
+
+.img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secBg);
+}
+
+.img img {
+    max-height: var(--postHeight);
+    max-width: var(--postWidth);
+}
+
+/* like & comment btns */
+.interactBtn, .interactBtn > div {
+    display: flex;
+    align-items: center;
+}
+
+.interactBtn {
+    gap: 2em;
+}
+
+.interactBtn  >div {
+    gap: 15px;
+    justify-content: center;
+}
+
+
+
+@media screen and (max-width: 600px) {
+    :root {
+        --postWidth: 300px;
+        --postHeight: 320px;
+    }
+    .post {
+        width: 100%;
+    }
+}
+
+
+/* overall responsiveness (page) */
+
+@media screen and (max-width: 850px) {
+    .searchSection {
+        width: 98%;
+    }
+}
+
+
+
+/* down icons */
+
+.down {
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .4s ease;
+}
+
+.down > img {
+    width: 100%;
+}
+
+
+
+
+.collapse {
+    height: 0px;
+    overflow: hidden;
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
