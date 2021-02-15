@@ -1,49 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+{% extends 'weeb/base.html' %}
 
-    <!-- font -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
-
-    <!-- essential files -->
-    <link rel="stylesheet" href="style/base.css">
-    <link rel="stylesheet" href="style/flash_messages.css">
-    <script defer src="js/flash_messages.js"></script>
 
     <!-- specific files -->
+{% block specific %}
+        {% load static %}
     <link rel="stylesheet" href="style/search.css">
     <script defer src="./js/search_show_hide.js"></script>
-    
-    <title>Weeb-Ex</title>
-</head>
-<body>
-    
-    <div class="container">
-
-        <nav>
-            <div id="logo">
-                <a href="#home"><img src="img/logo.png" alt="logo"></a>
-            </div>
-
-            <div class="navBtn">
-                <div id="newPostBtn">
-                    <a href="#"><img src="img/new post.png" alt="new post"></a>
-                </div>
-                <div id="profileBtn">
-                    <a href="#"><img src="img/avatar.png" alt="avatar"></a>
-                </div>
-                <div id="logoutBtn">
-                    <a href="#"><img src="img/logout.png" alt="logOut"></a>
-                </div>
-            </div>
-        </nav>
+{% endblock %}
 
 
-        <div class="content">
+{% block title %} searh {% endblock %}
+
+
+
+
+{% block content %
             <!-- search section -->
             <div class="searchSection">
                 <!-- search input box -->
@@ -60,85 +31,54 @@
                     <section id="users">
                         <div class="Header">
                             <h1>users</h1>
-                            <a class="down" src='#down'><img src="https://img.icons8.com/ios-filled/50/000000/down-squared--v2.png"/></a>
+                            <a class="down"><img src="https://img.icons8.com/ios-filled/50/000000/down-squared--v2.png"/></a>
                         </div>
                         <!-- query items -->
                         <ul>
-                            <a src="#userDetail">
-                                <div class="avatar"><img src="./img/avatar.png" alt="user avatar"></div>
-                                <p>Full Name</p>
-                                <span class="user">username</span>
-                            </a>
-                            <a src="#userDetail">
-                                <div class="avatar"><img src="./img/avatar.png" alt="user avatar"></div>
-                                <p>Full Name</p>
-                                <span class="user">username</span>
-                            </a>
-                            <a src="#userDetail">
-                                <div class="avatar"><img src="./img/avatar.png" alt="user avatar"></div>
-                                <p>Full Name</p>
-                                <span class="user">username</span>
-                            </a>
+
+                            <!--    users   -->
+
+                                {% for user in userObj %}
+                                <a src="#userDetail">
+                                    <div class="avatar"><img src="{% static 'weeb/img/avatar.png' %}" alt="user avatar"></div>
+                                    <p>{{ user.fullName }}</p>
+                                    <span class="user">{{ user.username }}</span>
+                                </a>
+
                         </ul>
                     </section>
                     <!-- list of posts -->
                     <section id="posts">
                         <div class="Header">
                             <h1>posts</h1>
-                            <a class="down" src='#down'><img src="https://img.icons8.com/ios-filled/50/000000/down-squared--v2.png"/></a>
+                            <a class="down"><img src="https://img.icons8.com/ios-filled/50/000000/down-squared--v2.png"/></a>
                         </div>
                         <ul>
-                            
-                            
-                            <div class="post">
-                                <a href="#userProfileLink"><h3 class="user">userName</h3></a>
-                                <a href="#postDetailed"><div class="img"><img src="media/degree.jpeg" alt="user pic"></div></a>
-                                <p class="caption">
-                                    deserunt officia, unde repellendus ut neque ipsam molestias soluta eligendi recusandae vel, tempora voluptate! Veritatis, iusto. Illum, illo!
-                                </p>
-                                <div class="interactBtn">
-                                    <div><a href="#like"><img src="img/like2.png" alt="like button"></a><span>69</span></div>
-                                    <div><a href="#postDetailed/comment"><img src="img/comment.png" alt="comment button"></a><span>3</span></div>
-                                </div>
-                            </div>
+
+                                <!--    post    -->
+
+                                {% for post in postObj %}
+                                    <div class="post">
+                                        <a href="{% url 'weeb:profile' post.user %}"><h3 class="user">{{ post.user.username }}</h3></a>
+                                        {% load static %}
+                                        <a href="{% url 'weeb:postDetail' post.pk %}"><div class="img"><img src="{{ post.img.url }}" alt="user pic"></div></a>
+                                        <p class="caption">
+                                            {{ post.caption|truncatechars:30 }}
+                                        </p>
+                                        <div class="interactBtn">
+                                            {% if user in post.likes.all %}
+                                            <div><a href="{% url 'weeb:postLike' post.pk %}"><img src="{% static 'weeb/img/like2.png' %}" alt="like button"></a><span>{{ post.likes.count }}</span></div>
+                                            {% else %}
+                                            <div><a href="{% url 'weeb:postLike' post.pk %}"><img src="{% static 'weeb/img/like1.png' %}" alt="like button"></a><span>{{ post.likes.count }}</span></div>
+                                            {% endif %}
+                                            <div><a href="{% url 'weeb:postDetail' post.pk %}"><img src="{% static 'weeb/img/comment.png' %}" alt="comment button"></a><span>{{ post.post_comment.count }}</span></div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
                             
                         </ul>
                     </section>
-                
                 </div>
-
             </div>
 
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-    <!-- flash messages -->
-    <ul class="flash">
-    <!--         
-        <li class="fm DEBUG">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi repellendus molestiae aperiam aut minus aliquid nisi omnis dolores assumenda, laboriosam fuga suscipit, aspernatur explicabo in quisquam pariatur. Dolore, error expedita.
-            <a class="deleteMsg"><img src="img/delete.png" alt="delete messages"></a>
-        </li>             
-        <li class="fm INFO"> {{ message }}
-            <a class="deleteMsg"><img src="img/delete.png" alt="delete messages"></a>
-        </li>
-        <li class="fm SUCCESS">ipsum
-            <a class="deleteMsg"><img src="img/delete.png" alt="delete messages"></a>
-        </li>
-        <li class="fm WARNING">lorem*2
-            <a class="deleteMsg"><img src="img/delete.png" alt="delete messages"></a>
-        </li>
-        <li class="fm ERROR">this is hackable!!!
-            <a class="deleteMsg"><img src="img/delete.png" alt="delete messages"></a>
-        </li>
-     -->
-    </ul>
-
-</body>
-</html>
+{% endblock %}
