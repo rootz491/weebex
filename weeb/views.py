@@ -15,6 +15,8 @@ from .forms import PostForm, RegisterForm, userDeleteForm
 from django.contrib import messages
 # to paginate index view
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+# to search - filter the results.
+from django.db.models import Q
 # regex to password check
 import re
 # Create your views here.
@@ -85,6 +87,32 @@ class PostView(LoginRequiredMixin, generic.CreateView):
     template_name = 'weeb/post_form.html'
     model = Post
     fields = ['img', 'caption']
+
+
+
+# search page
+
+class SearchView(LoginRequiredMixin, generic.ListView):
+    login_url = 'login'
+    model = Post, Profile
+    template_name = 'weeb/search.html'
+    context_object_name = 'obj'
+
+    def get_queryset(self):
+        query = self.request.GET.get('search')
+        if query == None:
+            return
+        postObj = Post.objects.filter(
+                Q(caption__icontains=query)
+            )
+        userObj = Profile.objects.filter(
+            Q(username__icontains=query)
+        )
+        return {
+            'postObj': postObj,
+            'userObj': userObj
+        }
+
 
 
 # @login_required

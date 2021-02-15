@@ -6,14 +6,11 @@ from . import views
 app_name = 'weeb'
 
 urlpatterns = [
-    # function based views
-    # path(r'', views.index, name='index'),
-    # path(r'post/<str:pk>/', views.postDetail, name='postDetail'),
-
-    # class based views
-
     # home page
     path(r'', views.IndexView.as_view(), name='index'),
+
+    # search page
+    path(r'search/', views.SearchView.as_view(), name='search'),
 
     # detailed post
     path(r'post/<str:pk>/', views.PostDetailedView.as_view(), name='postDetail'),
@@ -29,8 +26,7 @@ urlpatterns = [
     path(r'<str:username>', views.profile, name='profile'),
     path(r'<pk>/edit', views.ProfileEditView.as_view(), name='profileEdit'),
 
-    # post upload
-    # path(r'post/upload', views.PostView.as_view(), name='uploadPost'),
+
 
     # register
     path(r'accounts/register', views.registerUser, name='register'),

@@ -4,23 +4,23 @@
     <!-- specific files -->
 {% block specific %}
         {% load static %}
-    <link rel="stylesheet" href="style/search.css">
-    <script defer src="./js/search_show_hide.js"></script>
+    <link rel="stylesheet" href="{% static 'weeb/style/search.css'%}">
+    <script defer src="{% static 'weeb/js/search_show_hide.js'%}"></script>
 {% endblock %}
 
 
-{% block title %} searh {% endblock %}
+{% block title %} weeb-Ex | search {% endblock %}
 
 
 
 
-{% block content %
+{% block content %}
             <!-- search section -->
             <div class="searchSection">
                 <!-- search input box -->
                 <div class="searchBox">
-                    <form action="#search">
-                        <!-- {% csrf_token %} -->
+                    <form action="">
+                         {% csrf_token %}
                         <input type="search"  class="search" name="search">
                         <button type="submit">search</button>
                     </form>
@@ -38,12 +38,13 @@
 
                             <!--    users   -->
 
-                                {% for user in userObj %}
-                                <a src="#userDetail">
+                                {% for user in obj.userObj %}
+                                <a target="_blank" src="{% url 'weeb:profile' user.username  %}">
                                     <div class="avatar"><img src="{% static 'weeb/img/avatar.png' %}" alt="user avatar"></div>
                                     <p>{{ user.fullName }}</p>
                                     <span class="user">{{ user.username }}</span>
                                 </a>
+                                {% endfor %}
 
                         </ul>
                     </section>
@@ -57,7 +58,7 @@
 
                                 <!--    post    -->
 
-                                {% for post in postObj %}
+                                {% for post in obj.postObj %}
                                     <div class="post">
                                         <a href="{% url 'weeb:profile' post.user %}"><h3 class="user">{{ post.user.username }}</h3></a>
                                         {% load static %}

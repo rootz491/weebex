@@ -39,6 +39,9 @@
             <div class="navBtn">
                 {% if user.is_authenticated %}
                 <div id="newPostBtn">
+                    <a href="{% url 'weeb:search' %}"><img src="{% static 'weeb/img/search.png' %}" alt="new post"></a>
+                </div>
+                <div id="newPostBtn">
                     <a href="{% url 'weeb:uploadPost' %}"><img src="{% static 'weeb/img/new post.png' %}" alt="new post"></a>
                 </div>
                 <div id="profileBtn">
