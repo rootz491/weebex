@@ -4,7 +4,8 @@
     <list default="true" id="88a6e4e3-cb69-4a33-b15e-edcd82f6473d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weebEx/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/weebEx/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weeb/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/weeb/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weeb/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/weeb/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,5 +119,9 @@
       <screen x="0" y="26" width="1600" height="850" />
     </state>
     <state x="463" y="197" width="672" height="678" key="search.everywhere.popup/0.26.1600.850@0.26.1600.850" timestamp="1608728903082" />
+    <state x="513" y="363" width="540" height="169" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1614519023571">
+      <screen x="0" y="26" width="1576" height="850" />
+    </state>
+    <state x="513" y="363" width="540" height="169" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.26.1576.850@0.26.1576.850" timestamp="1614519023571" />
   </component>
 </project>

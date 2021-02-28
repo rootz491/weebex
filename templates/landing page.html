@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+    <!-- essential files -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'weeb/style/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'weeb/style/flash_messages.css' %}">
+
+    <!-- specific files -->
+    <link rel="stylesheet" type="text/css" href="{% static 'weeb/style/landing.css' %}">
+
+    <title>Weeb-Ex</title>
+</head>
+<body>
+    
+    <div class="container">
+
+        <nav>
+            <div id="logo">
+                <a href="#home"><img src="{% static 'weeb/img/logo.png' %}" alt="logo"></a>
+            </div>
+
+            <div class="registerBtn">
+                <a href="{% url 'weeb:register' %}">register</a>
+            </div>
+        </nav>
+
+        <div class="content">
+            
+            <section id="first">
+                <div class="firstOne">
+                    <div>
+                        <h1>Share your thoughts among others</h1>
+                        <p>Create your account, think what to share and post. This is a place where we bring our ideas together.</p>
+                    </div>
+                </div>
+                <div class="firstTwo">
+                    <img src="{% static 'weeb/img/landing/desktop+mobile.svg' %}" alt="desktop & mobile img">
+                </div>
+            </section>
+
+            <section id="second">
+                <div id="features">
+                    <div class="featuresOne">
+                        <div>
+                            <img src="https://img.icons8.com/cotton/64/000000/image--v2.png"/>
+                        </div>
+                        <h3>post images</h3>
+                        <p>let your imagination fly</p>
+                    </div>
+                    <div class="featuresTwo">
+                        <div>
+                            <img src="https://img.icons8.com/plasticine/64/000000/contract-job.png"/>
+                        </div>
+                        <h3>add profile</h3>
+                        <p>describe who you really are</p>
+                    </div>
+                    <div class="featuresThree">
+                        <div>
+                            <img src="https://img.icons8.com/nolan/64/facebook-like.png"/>
+                        </div>
+                        <h3>like post</h3>
+                        <p>like what other people posts</p>
+                    </div>
+                </div>
+                <div class="secondTwo">
+                    <div><img src="{% static 'weeb/img/landing/img.svg' %}" alt="illustration thing"></div>
+                    <div>
+                        <h1>Post your pictures and see how others react to them.</h1>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias fugiat laborum reiciendis sunt sapiente nobis aliquid deleniti facere voluptatibus esse consequatur facilis illo ab corporis, animi quod laboriosam explicabo beatae.Deleniti tenetur debitis accusantium illum saepe.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="third">
+                <div class="thirdTwo">
+                    <h1>Register, Login <br> and Start posting.</h1>
+                </div>
+                <div class="thirdOne">
+                    <img src="{% static 'weeb/img/landing/loginRegisterPost.svg' %}" alt="steps to success">
+                </div>
+            </section>
+
+            <section id="forth">
+                <div class="forthOne">
+                    <h1>What are you waiting for?</h1>
+                    <h1>Start posting now</h1>
+                </div>
+            </section>
+
+            <div id="footer">
+                <div class="footerOne">
+                    <div class="followMe">
+                        <h2>Follow Me</h2>
+                        <div>
+                            <a href="#facebook"><img src="https://img.icons8.com/doodle/48/000000/facebook-new.png"/></a>
+                            <a href="#insta"><img src="https://img.icons8.com/doodle/48/000000/instagram-new.png"/></a>
+                            <a href="#twitter"><img src="https://img.icons8.com/doodle/48/000000/twitter.png"/></a>
+                            <a href="#linkedin"><img src="https://img.icons8.com/doodle/48/000000/linkedin.png"/></a>
+                        </div>
+                    </div>
+                    <div class="contactUs">
+                        <h2>Contact Us</h2>
+                        <input type="email" placeholder="example@work.com" required>
+                        <textarea cols="30" rows="10" placeholder="Any message for me?" required></textarea>
+                        <button type="submit">send</button>
+                    </div>
+                </div>
+                <div class="footerTwo">
+                    <div class="about">
+                        <h1>About</h1>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit neque corporis officiis quisquam natus unde quaerat hic deserunt qui beatae autem, excepturi dolore aperiam ratione a, sed saepe reiciendis illum?Fugit error recusandae ipsa voluptates pariatur illo sint voluptas, vel, autem nemo perferendis voluptatem, tenetur mollitia velit nihil officiis itaque alias animi commodi libero ad sapiente vitae maiores eveniet. Minima!</p>
+                    </div>
+                    <div class="creator">
+                        <p>Created by <a target="_blank" href="https://karansh491-2.netlify.app">@rootz491</a></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

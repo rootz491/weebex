@@ -1,0 +1,310 @@
+body {
+    background: #212121;
+}
+
+nav {
+    justify-content: space-between;
+    padding-right: 2em;
+}
+
+.registerBtn {
+    padding: 6px 12px;
+    background-color: blueviolet;
+    color: white;
+    border-radius: 4px;
+    border: 3px solid blueviolet;
+}
+
+.registerBtn:hover {
+    background: #1C1E29;
+    border: 3px solid blueviolet;
+
+}
+
+
+/* section 1 */
+
+section {
+    min-height: 80vh;
+}
+
+#first {
+    display: flex;
+}
+
+#first > div {
+    flex: 1;
+    padding: 3em;
+}
+
+.firstOne {
+    display: grid;
+    place-content: center;
+}
+
+    /* to make space b/w heading & content */
+.firstOne div {
+    display: grid;
+    gap: 1em;
+}
+
+.firstTwo > img {
+    width: 100%;    
+}
+
+
+/* section 2 */
+
+
+    /* features div */
+#features {
+    height: 250px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1em;
+}
+
+#features > div {
+    width: 150px;
+    padding: 1em;
+    text-align: center;
+}
+
+#features > div > div {
+    width: 100%;
+    border-radius: 100;
+}
+
+#features div > img {
+    width: 100%;
+    margin-bottom: .5em;
+}
+
+#features h3 {
+    font-size: 18px;
+}
+
+#features p {
+    font-size: 12px;
+}
+
+    /* illustartion */
+.secondTwo {
+    display: flex;
+    padding: 2em 5em;
+}
+
+.secondTwo div {
+    width: 300px;
+}
+
+.secondTwo img {
+    width: 100%;
+}
+
+.secondTwo div:nth-child(2) {
+    margin: 2em;
+    flex: 1;
+    display: grid;
+    align-items: center;
+}
+
+
+/* section 3 */
+
+#third {
+    margin-top: 3em;
+    padding: 0 3em;
+    position: relative;
+}
+
+.thirdOne {
+    width: 40%;
+
+}
+
+.thirdOne > img {
+    width: 100%;
+}
+
+.thirdTwo {
+    position: absolute;
+    top: 0px;
+    right: 5em;
+    font-size: 1.8em;
+}
+
+
+
+/* section 4 */
+
+#forth {
+    height: 100vh;
+    display: grid;
+    place-content: center;
+}
+
+.forthOne {
+    text-align: center;
+    font-size: 1.8em;
+}
+
+
+/* footer */
+
+#footer {
+    margin: 2em 0;
+    padding: 1em;
+    display: flex;
+    height: 500px;
+}
+
+#footer > div {
+    margin-right: 1em;
+    margin-left: 6em;
+    flex: 1;
+    display: grid;
+}
+
+.contactUs {
+    width: 350px;
+}
+
+.contactUs > h1, .contactUs > input, .contactUs > textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    background: #212121;
+    border: .3px solid white;
+    border-radius: 2px;
+}
+
+.contactUs > input, .contactUs > textarea {
+    padding: 2px 6px;
+}
+
+.contactUs > button {
+    background: #212121;
+    border: 1px solid white;
+    padding: 3px 9px;
+    outline: none;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.creator {
+    margin-top: auto;
+    text-align: right;
+    font-size: 1.5em;
+}
+
+.about {
+    text-align: justify;
+}
+
+
+
+.creator a {
+    color: var(--Lblue);
+}
+
+
+
+/* designing end here */
+
+/* responsiveness */
+
+
+@media screen and (max-width: 1000px) {
+    /* section 1 */
+    #first {
+        display: block;
+    }
+    .firstOne {
+        padding-left:  10em;
+        padding-right: 10em;
+    }
+
+    /* section 2 */
+    .secondTwo {
+        display: block;
+    }
+    .secondTwo > div {
+        margin: auto;
+        margin-bottom: 3em;
+    }
+    .secondTwo div:nth-child(2) {
+        display: block;
+        margin: auto;
+    }
+
+    /* section 3 */
+    #third > div {
+        position: static;
+        display: block;
+    }
+    .thirdOne {
+        width: 60%;
+        margin: auto;
+    }
+    .thirdTwo {
+        margin: 2em auto;
+        text-align: center;
+    }
+}
+
+    /* footer responsiveness */
+@media screen and (max-width: 800px) {
+    #footer {
+        display: block;
+        height: auto;
+    }
+    #footer > div {
+        gap: 2em;
+    }
+    .footerOne {
+        margin-bottom: 3em;
+    }
+}
+
+
+@media screen and (max-width: 650px) {
+    .contactUs {
+        width: 100%;
+    }
+    #footer > div {
+        margin-left: 2em;
+        margin-right: 2em;
+    }
+    #features {
+        height: auto;
+        display: grid;
+        gap: 2em;
+        margin-bottom: 4em;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .firstTwo {
+        width: 100%;
+        padding: .5em;
+    }
+    .secondTwo {
+        padding: 1em;
+    }
+    .secondTwo > div {
+        width: 100%;
+        text-align: justify;
+    }
+    .thirdOne {
+        width: 100%;
+    }
+    .thirdTwo {
+        font-size: 20px;
+    }
+    /* register button */
+    .registerBtn {
+        font-size: 14px;
+        padding: 3px 6px;
+    }
+}
+

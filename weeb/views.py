@@ -55,7 +55,7 @@ def index(request):
 #   class based views
 
 class IndexView(LoginRequiredMixin, generic.ListView):      # using paginator!
-    login_url = 'login'
+    login_url = 'weeb:landing'
     model = Post
     template_name = 'weeb/home.html'
     context_object_name = 'postObj'
@@ -64,26 +64,27 @@ class IndexView(LoginRequiredMixin, generic.ListView):      # using paginator!
 
 
 class PostDetailedView(LoginRequiredMixin, generic.DetailView):
+    login_url = 'weeb:landing'
     model = Post
     template_name = 'weeb/postDetailed.html'
     context_object_name = 'post'
 
 
 class PostDeleteView(LoginRequiredMixin, generic.DeleteView):
-    login_url = 'login'
+    login_url = 'weeb:landing'
     model = Post
     success_url = reverse_lazy('weeb:index')
 
 
 class ProfileEditView(LoginRequiredMixin, generic.UpdateView):
-    login_url = 'login'
+    login_url = 'weeb:landing'
     model = Profile
     template_name = 'weeb/profile_form.html'
     fields = ['fullName', 'bio', 'twitterHandle']
 
 
 class PostView(LoginRequiredMixin, generic.CreateView):
-    login_url = 'login'
+    login_url = 'weeb:landing'
     template_name = 'weeb/post_form.html'
     model = Post
     fields = ['img', 'caption']
@@ -93,7 +94,7 @@ class PostView(LoginRequiredMixin, generic.CreateView):
 # search page
 
 class SearchView(LoginRequiredMixin, generic.ListView):
-    login_url = 'login'
+    login_url = 'weeb:landing'
     model = Post, Profile
     template_name = 'weeb/search.html'
     context_object_name = 'obj'
@@ -264,6 +265,9 @@ def UploadPost(request):
 
 
 def registerUser(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect("/")
+
     template_name = 'registration/register.html'
 
     # display blank form
@@ -324,3 +328,9 @@ def registerUser(request):
         # if form is not valid then,
         messages.add_message(request, messages.WARNING, 'something\'s wrong with user, contact admin')
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+
+def landing(request):
+    template_name = 'landing page.html'
+    return render(request, template_name)

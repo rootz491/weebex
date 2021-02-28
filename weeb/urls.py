@@ -25,13 +25,13 @@ urlpatterns = [
     # profile
     path(r'<str:username>', views.profile, name='profile'),
     path(r'<pk>/edit', views.ProfileEditView.as_view(), name='profileEdit'),
-
-
+    path(r'<str:username>/account/delete', views.userDelete, name='userDelete'),
 
     # register
     path(r'accounts/register', views.registerUser, name='register'),
 
-    path(r'<str:username>/account/delete', views.userDelete, name='userDelete'),
+    # landing
+    path(r'welcome/', views.landing, name='landing'),
 
     # error handling
     path(r'favicon.ico', RedirectView.as_view(url='weeb/static/img/favicon.ico'))
