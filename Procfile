@@ -1,0 +1,1 @@
+web: gunicorn weebEx.wsgi --log-file -

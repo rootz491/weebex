@@ -74,14 +74,12 @@
     align-items: center;
 }
 
-.interactBtn {
-    gap: 2em;
-}
-
-.interactBtn  >div {
+.interactBtn  > div {
     gap: 15px;
+    margin-right: 2em;
     justify-content: center;
 }
+
 
 @media screen and (max-width: 500px) {
     .postInfo h1 {

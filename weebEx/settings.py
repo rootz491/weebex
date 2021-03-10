@@ -25,7 +25,13 @@ SECRET_KEY = '$b637&9)n7g)10rbk^ajklft^p&9*8ih-qjfl@nsiof3g%4w^a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['weebex.azurewebsites.net', '6bb90fc98edd.ngrok.io', 'localhost', '127.0.0.1']
+
+if not DEBUG:
+    import dj_database_url
+    import django_heroku
+
+
+ALLOWED_HOSTS = ['weebex.azurewebsites.net', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -82,6 +88,14 @@ DATABASES = {
     }
 }
 
+
+if not DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'ciba',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -148,3 +162,7 @@ MEDIA_URL = f'https://django491.blob.core.windows.net/static/'
 
 # after this look at backend folder, it is used to give key to azure acc. to upload static files.
 # after that, use command =>    ./manage.py collectstatic
+
+
+if not DEBUG:
+    django_heroku.settings(locals())
