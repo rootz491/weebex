@@ -165,4 +165,10 @@ MEDIA_URL = f'https://django491.blob.core.windows.net/static/'
 
 
 if not DEBUG:
+    MIDDLEWARE += ['whitenoise.middleware.WhiteNoiseMiddleware']
+
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATIC_URL = '/static/'
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
     django_heroku.settings(locals())
