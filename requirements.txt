@@ -3,6 +3,7 @@ Pillow==8.0.1
 django-storages==1.11.1
 whitenoise
 dj-database-url
+django-storages[azure]
 django-heroku
 gunicorn
 psycopg2
