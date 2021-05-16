@@ -23,8 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '$b637&9)n7g)10rbk^ajklft^p&9*8ih-qjfl@nsiof3g%4w^a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False
+DEBUG = True
 
+CORS_ORIGIN_ALLOW_ALL = True
 
 if not DEBUG:
     import dj_database_url
@@ -45,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'weeb.apps.WeebConfig',
     'storages',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -55,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'weebEx.urls'
@@ -172,5 +176,6 @@ if not DEBUG:
     STATIC_ROOT = BASE_DIR / 'staticfiles'
     STATIC_URL = '/static/'
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    DEFAULT_FILE_STORAGE = 'backend.custom_azure.AzureMediaStorage'
 
     django_heroku.settings(locals())

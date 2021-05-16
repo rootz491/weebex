@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="88a6e4e3-cb69-4a33-b15e-edcd82f6473d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weebEx/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/weebEx/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,6 +110,10 @@
       <screen x="0" y="26" width="1600" height="850" />
     </state>
     <state x="483" y="189" width="624" height="522" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.26.1600.850@0.26.1600.850" timestamp="1609480400366" />
+    <state x="469" y="70" width="627" height="756" key="#urls" timestamp="1617112238341">
+      <screen x="0" y="26" width="1576" height="850" />
+    </state>
+    <state x="469" y="70" width="627" height="756" key="#urls/0.26.1576.850@0.26.1576.850" timestamp="1617112238341" />
     <state x="289" y="84" key="SettingsEditor" timestamp="1608728118054">
       <screen x="0" y="26" width="1600" height="850" />
     </state>
