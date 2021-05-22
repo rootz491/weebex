@@ -1,0 +1,2 @@
+# weebex
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/51618070ec574cb2acb77fc38e2d5881)](https://app.codacy.com/gh/rootz491/weebex?utm_source=github.com&utm_medium=referral&utm_content=rootz491/weebex&utm_campaign=Badge_Grade_Settings)
