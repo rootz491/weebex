@@ -173,7 +173,7 @@ MEDIA_URL = f'https://django491.blob.core.windows.net/static/'
 if not DEBUG:
     MIDDLEWARE += ['whitenoise.middleware.WhiteNoiseMiddleware']
 
-    STATIC_ROOT = BASE_DIR / 'staticFiles'   # maybe change back to 'staticFiles'
+    STATIC_ROOT = BASE_DIR / 'static'   # maybe change back to 'staticFiles'
     STATIC_URL = '/static/'
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
     DEFAULT_FILE_STORAGE = 'backend.custom_azure.AzureMediaStorage'
